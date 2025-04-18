@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Blog Post Generator - GemContent</title>
+    <link rel="stylesheet" href="css/blog_post_script.css">
+    <!-- Link to Font Awesome for Icons (optional) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to Google Fonts (replace with GemContent's actual fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/" class="logo">GemContent</a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="privacy.html" class="active">privacy-policy</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary">Login</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation Menu (Hidden by default) -->
+    <div class="mobile-nav">
+         <ul>
+            <li><a href="features.html">Tools</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="features.html" class="active">Features</a></li>
+            <li><a href="login.html">Login</a></li>
+            <li><a href="signup.html">Sign Up</a></li>
+        </ul>
+    </div>
+
+    <main>
+        <!-- Tool Introduction -->
+        <section class="tool-intro section-padding">
+            <div class="container text-center">
+                <h1 class="gradient-text">AI-Powered SEO Blog Post Generator</h1>
+                <p class="subtitle">Craft compelling, optimized blog posts in minutes. Just provide a topic, keywords, and your desired style, and let GemContent's AI, powered by Google Gemini, do the heavy lifting. Get ready to boost your content creation and climb the search rankings!</p>
+            </div>
+        </section>
+
+        <!-- Generator Form & Results -->
+        <section class="generator-section section-padding">
+            <div class="container generator-container">
+
+                <!-- Form Card -->
+                <div class="card form-card">
+                    <h2>Generate Your SEO Blog Post</h2>
+                    <p>Fill in the details below to get started.</p>
+                    <form id="generator-form">
+                        <div class="form-group">
+                            <label for="blog-topic">Blog Post Topic / Title <span class="required">*</span></label>
+                            <input type="text" id="blog-topic" name="blog-topic" required placeholder="e.g., The Future of Renewable Energy">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="keywords">Target Keywords (comma-separated) <span class="required">*</span></label>
+                            <input type="text" id="keywords" name="keywords" required placeholder="e.g., solar power, wind energy, sustainable future">
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="content-length">Content Length</label>
+                                <select id="content-length" name="content-length">
+                                    <option value="short">Short (~500 words)</option>
+                                    <option value="medium" selected>Medium (~1000 words)</option>
+                                    <option value="long">Long (~1500+ words)</option>
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label for="tone">Tone of Voice</label>
+                                <select id="tone" name="tone">
+                                    <option value="professional" selected>Professional</option>
+                                    <option value="casual">Casual</option>
+                                    <option value="authoritative">Authoritative</option>
+                                    <option value="friendly">Friendly</option>
+                                    <option value="witty">Witty</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="target-audience">Target Audience</label>
+                            <input type="text" id="target-audience" name="target-audience" placeholder="e.g., Small business owners, Tech enthusiasts">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="brief">Optional Brief / Additional Instructions</label>
+                            <textarea id="brief" name="brief" rows="4" placeholder="e.g., Focus on the benefits for homeowners. Include a section on government incentives. Avoid jargon."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="reference-file">Optional Reference File/Image</label>
+                            <input type="file" id="reference-file" name="reference-file" accept=".txt,.pdf,.doc,.docx,image/*">
+                            <small>Upload documents or images for context (processing requires backend).</small>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" id="generate-btn" class="btn btn-primary btn-lg">
+                                <span class="btn-text">Generate Post</span>
+                                <span class="spinner" style="display: none;"></span>
+                            </button>
+                            <div class="usage-info">
+                                <i class="fas fa-bolt"></i>
+                                <span id="usage-counter">5</span> generations remaining (Free Tier)
+                                <!-- Needs backend for actual tracking -->
+                            </div>
+                        </div>
+                    </form>
+                     <div class="sample-prompts">
+                        <strong>Need inspiration? Try these:</strong>
+                        <ul>
+                            <li><a href="#" class="sample-link" data-topic="Top 5 SEO Trends for 2024" data-keywords="SEO, digital marketing, search engine optimization, trends">Top 5 SEO Trends for 2024</a></li>
+                            <li><a href="#" class="sample-link" data-topic="Beginner's Guide to Content Marketing" data-keywords="content marketing, blogging, social media, strategy">Beginner's Guide to Content Marketing</a></li>
+                            <li><a href="#" class="sample-link" data-topic="Benefits of Using a Standing Desk" data-keywords="standing desk, ergonomics, health, productivity, office setup">Benefits of Using a Standing Desk</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Loading Indicator -->
+                <div id="loading-indicator" class="loading-indicator card" style="display: none;">
+                    <div class="loader"></div>
+                    <p>Generating your blog post with Gemini AI... <br> This might take a moment.</p>
+                </div>
+
+                <!-- Error Message -->
+                <div id="error-message" class="error-message card" style="display: none;">
+                     <i class="fas fa-exclamation-triangle"></i>
+                     <span>Oops! Something went wrong. Please try again.</span>
+                     <p id="error-details" class="error-details-text"></p>
+                </div>
+
+                <!-- Results Card -->
+                <div id="results-section" class="card results-card" style="display: none;">
+                    <h2>Generated Blog Post</h2>
+
+                    <div class="results-actions">
+                        <button id="copy-btn" class="btn btn-secondary btn-sm"><i class="fas fa-copy"></i> Copy</button>
+                        <div class="export-dropdown">
+                             <button id="export-btn" class="btn btn-secondary btn-sm"><i class="fas fa-download"></i> Export <i class="fas fa-chevron-down"></i></button>
+                             <div class="export-options">
+                                 <button id="export-txt-btn" data-format="txt">Plain Text (.txt)</button>
+                                 <button id="export-md-btn" data-format="md">Markdown (.md)</button>
+                                 <button id="export-html-btn" data-format="html">HTML (.html)</button>
+                             </div>
+                        </div>
+                        <button id="save-btn" class="btn btn-secondary btn-sm"><i class="fas fa-save"></i> Save to Account</button>
+                        <!-- <button id="regenerate-btn" class="btn btn-secondary btn-sm"><i class="fas fa-redo"></i> Regenerate</button> -->
+                        <!-- Note: Section regeneration is complex and omitted here -->
+                    </div>
+
+                    <div class="results-metadata">
+                        <div class="meta-item">
+                            <span class="meta-label">Keywords Used</span>
+                            <span class="meta-value" id="keyword-count">N/A</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Readability</span>
+                            <span class="meta-value" id="readability-score">N/A</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Est. SEO Score</span>
+                            <span class="meta-value" id="seo-score">N/A</span>
+                        </div>
+                         <div class="meta-item">
+                            <span class="meta-label">Word Count</span>
+                            <span class="meta-value" id="word-count">0</span>
+                        </div>
+                        <div class="meta-item">
+                            <span class="meta-label">Reading Time</span>
+                            <span class="meta-value" id="reading-time">~0 min</span>
+                        </div>
+                    </div>
+
+                    <div id="generated-content-wrapper">
+                         <label for="generated-content" class="sr-only">Generated Blog Post Content</label>
+                         <div id="generated-content" contenteditable="true" role="textbox" aria-multiline="true" placeholder="Your generated blog post will appear here. You can edit it directly.">
+                            <!-- Generated content will be injected here -->
+                         </div>
+                     </div>
+                     <p class="edit-hint"><i class="fas fa-info-circle"></i> You can click directly into the text above to edit it.</p>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructions Section -->
+        <section class="instructions-section section-padding alt-bg">
+            <div class="container">
+                <h2 class="text-center">How to Get the Best Results</h2>
+                <div class="instructions-grid">
+                    <div class="instruction-item">
+                        <i class="fas fa-lightbulb"></i>
+                        <h3>Be Specific with Topics</h3>
+                        <p>Instead of "Marketing", try "Content Marketing Strategies for SaaS startups". Clearer topics yield better results.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fas fa-key"></i>
+                        <h3>Use Relevant Keywords</h3>
+                        <p>Include primary and LSI keywords you want to rank for. Separate them with commas.</p>
+                    </div>
+                     <div class="instruction-item">
+                        <i class="fas fa-bullseye"></i>
+                        <h3>Define Your Audience</h3>
+                        <p>Telling the AI who the post is for (e.g., "beginners", "experts", "CEOs") helps tailor the language and depth.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fas fa-pen-alt"></i>
+                        <h3>Leverage the Brief</h3>
+                        <p>Use the optional brief for specific instructions, sections to include, points to emphasize, or things to avoid.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fas fa-user-edit"></i>
+                        <h3>Edit & Refine</h3>
+                        <p>AI provides a great draft, but always review, edit, and add your unique voice and insights for the best final product.</p>
+                    </div>
+                    <div class="instruction-item">
+                        <i class="fas fa-search"></i>
+                        <h3>Check SEO Elements</h3>
+                        <p>Ensure the generated post uses keywords naturally in headings (H2, H3) and throughout the text. Use the metadata as a guide.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer section-padding">
+        <div class="container footer-container">
+            <div class="footer-logo">GemContent</div>
+            <div class="footer-links">
+                <a href="#">About Us</a>
+                <a href="contect.html">Contact</a>
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <div class="footer-copy">
+                © <span id="current-year"></span> GemContent. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/blog_post_script.js"></script>
+</body>
+</html>

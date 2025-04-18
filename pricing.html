@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing - GemContent</title>
+
+    <!-- Link to the new Pricing CSS file -->
+    <link rel="stylesheet" href="css/pricing.css"> <!-- Adjust path if needed -->
+
+    <!-- Font Awesome for Icons (Optional but recommended) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon (replace with your actual favicon) -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+
+</head>
+<body>
+
+    <!-- ===== Header (Copy EXACTLY from your working homepage HTML) ===== -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="home.html" class="logo">GemContent</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <!-- Add links to your other tool pages -->
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="pricing.html" class="active">Pricing</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="contect.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <button id="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <!-- Add mobile nav structure here if needed -->
+        <!-- <nav class="mobile-nav" id="mobile-nav-menu"> ... </nav> -->
+    </header>
+    <!-- ================================================================= -->
+
+    <main>
+        <!-- ===== Pricing Section ===== -->
+        <section id="pricing" class="section-padding">
+            <div class="container">
+                <h2 class="section-title">Choose Your Plan</h2>
+                <p class="section-subtitle">
+                    Simple, transparent pricing to unlock the power of AI content generation and enhancement for everyone.
+                </p>
+
+                <div class="pricing-container">
+
+                    <!-- Tier 1: Free -->
+                    <div class="pricing-tier card">
+                        <h3>Free Forever</h3>
+                        <p class="tier-description">Get started with basic features, perfect for occasional use.</p>
+                        <div class="price">
+                            $0<span>/month</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 10 Generations/Month</li>
+                            <li><i class="fas fa-check"></i> Basic Rewriter Tool</li>
+                            <li><i class="fas fa-check"></i> Limited Tones & Purposes</li>
+                            <li><i class="fas fa-times"></i> FAQ Generator Access</li>
+                            <li><i class="fas fa-times"></i> Priority Support</li>
+                            <li><i class="fas fa-times"></i> Advanced Features</li>
+                        </ul>
+                        <!-- Use btn-secondary for free tier signup -->
+                        <a href="#" class="btn btn-secondary">Get Started Free</a>
+                    </div>
+
+                    <!-- Tier 2: Pro (Popular) -->
+                    <div class="pricing-tier card popular">
+                        <span class="popular-badge">Most Popular</span>
+                        <h3>Pro</h3>
+                        <p class="tier-description">Ideal for professionals, bloggers, and marketers needing more power.</p>
+                        <div class="price">
+                            $19<span>/month</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 200 Generations/Month</li>
+                            <li><i class="fas fa-check"></i> Full Rewriter Tool Access</li>
+                            <li><i class="fas fa-check"></i> All Tones & Purposes</li>
+                            <li><i class="fas fa-check"></i> FAQ Generator Tool</li>
+                            <li><i class="fas fa-check"></i> Standard Support</li>
+                            <li><i class="fas fa-check"></i> Plagiarism Check (Beta)</li>
+                             <li><i class="fas fa-times"></i> Team Features</li>
+                            <li><i class="fas fa-times"></i> API Access</li>
+                        </ul>
+                        <!-- Add data-stripe-price-id attribute with your actual Stripe Price ID -->
+                        <button class="btn btn-primary stripe-checkout-button" data-stripe-price-id="YOUR_PRO_MONTHLY_PRICE_ID">Choose Pro</button>
+                    </div>
+
+                    <!-- Tier 3: Business -->
+                    <div class="pricing-tier card">
+                        <h3>Business</h3>
+                         <p class="tier-description">For teams and agencies requiring high volume and collaboration.</p>
+                        <div class="price">
+                            $49<span>/month</span>
+                        </div>
+                        <ul>
+                            <li><i class="fas fa-check"></i> 1000 Generations/Month</li>
+                             <li><i class="fas fa-check"></i> All Tool Access</li>
+                             <li><i class="fas fa-check"></i> All Tones & Purposes</li>
+                             <li><i class="fas fa-check"></i> Advanced Features</li>
+                            <li><i class="fas fa-check"></i> Priority Support</li>
+                            <li><i class="fas fa-check"></i> Team Collaboration (3 Seats)</li>
+                            <li><i class="fas fa-check"></i> API Access (Coming Soon)</li>
+                             <li><i class="fas fa-times"></i> Custom Integrations</li>
+                        </ul>
+                         <!-- Add data-stripe-price-id attribute -->
+                        <button class="btn btn-secondary stripe-checkout-button" data-stripe-price-id="YOUR_BUSINESS_MONTHLY_PRICE_ID">Choose Business</button>
+                    </div>
+
+                </div> <!-- /.pricing-container -->
+
+                <p class="pricing-note">
+                    Need more? <a href="#">Contact us</a> for custom Enterprise plans.
+                </p>
+
+            </div> <!-- /.container -->
+        </section> <!-- /#pricing -->
+
+        <!-- ===== FAQ Section (Copy/Adapt from Homepage if available) ===== -->
+        <section id="faq" class="section-padding section-alternate">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-subtitle">Got questions about pricing or plans? We've got answers.</p>
+
+                <div class="faq-accordion">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>What payment methods do you accept?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>We accept all major credit cards (Visa, Mastercard, American Express) securely processed via Stripe. We do not store your credit card details.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            <span>Can I cancel my subscription anytime?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Yes, absolutely! You can cancel your Pro or Business subscription at any time from your account settings. Your access will continue until the end of the current billing period.</p>
+                        </div>
+                    </div>
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item">
+                         <button class="faq-question" aria-expanded="false">
+                            <span>What counts as one "generation"?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Each time you click the "Enhance Content" or "Generate FAQs" button and receive results from the AI counts as one generation towards your monthly limit.</p>
+                        </div>
+                    </div>
+                     <!-- FAQ Item 4 -->
+                     <div class="faq-item">
+                         <button class="faq-question" aria-expanded="false">
+                             <span>Is there an annual billing option?</span>
+                             <span class="faq-icon">+</span>
+                         </button>
+                         <div class="faq-answer">
+                             <p>Currently, we only offer monthly billing through the website. Please <a href="#">contact us</a> if you are interested in annual billing options, especially for Business or Enterprise plans.</p>
+                         </div>
+                     </div>
+                    <!-- Add more relevant FAQs -->
+                </div> <!-- /.faq-accordion -->
+            </div> <!-- /.container -->
+        </section> <!-- /#faq -->
+
+    </main>
+
+    <!-- ===== Footer (Copy EXACTLY from your working homepage HTML) ===== -->
+    <footer id="footer">
+        <div class="container footer-container">
+             <div class="footer-about">
+                 <a href="home.html" class="logo">GemContent</a>
+                 <p>Supercharge your content creation with AI-powered tools designed for clarity, engagement, and impact.</p>
+                  <div class="contact-info">
+                      <p>Email: <a href="mailto:support@gemcontent.com">support@gemcontent.com</a></p>
+                      <!-- <p>Phone: +1 234 567 890</p> -->
+                  </div>
+             </div>
+             <div class="footer-links">
+                 <h4>Quick Links</h4>
+                 <ul>
+                    <li><a href="home.html">Home</a></li>
+                     <li><a href="pricing.html">Pricing</a></li>
+                     <li><a href="#faq">FAQ</a></li>
+                     <li><a href="#">Terms of Service</a></li>
+                     <li><a href="privacy.html">Privacy Policy</a></li>
+                 </ul>
+             </div>
+             <div class="footer-legal">
+                 <h4>Tools</h4>
+                  <ul>
+                     <li><a href="your_text_enhancer_script.html">Content Rewriter</a></li>
+                     <li><a href="faq_script.html">FAQ Generator</a></li>
+                     <li><a href="#">More Coming Soon!</a></li>
+                 </ul>
+             </div>
+             <div class="footer-social">
+                 <h4>Follow Us</h4>
+                 <div class="social-media">
+                    <!-- Replace # with your actual social media links -->
+                     <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                     <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                     <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                 </div>
+             </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2023 GemContent. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <!-- ================================================================= -->
+
+    <!-- Stripe.js Library -->
+    <script src="https://js.stripe.com/v3/"></script>
+
+    <!-- Link to the new Pricing JavaScript file -->
+    <script src="js/pricing.js"></script> <!-- Adjust path if needed -->
+    <!-- Optional: Link to your global JS for header/mobile menu -->
+    <!-- <script src="js/main.js"></script> -->
+
+</body>
+</html>

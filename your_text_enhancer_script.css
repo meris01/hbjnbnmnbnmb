@@ -1,0 +1,1071 @@
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+/* Using Variables from HomePage.css */
+:root {
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #FF8C00; /* Dark Orange */
+    --accent-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    --accent-gradient-hover: linear-gradient(90deg, #006666, #cc7000);
+    --text-dark: #333;
+    --text-light: #f8f9fa;
+    --text-medium: #555;
+    --bg-light: #ffffff;
+    --bg-medium: #f8f9fa; /* Standard medium background */
+    --bg-dark: #343a40;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif;
+
+    /* Keep necessary spacing variables from original file */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --transition-speed: 0.3s; /* Use consistent speed */
+
+    /* Keep semantic colors from original file, adjust if needed */
+    --error-red: #dc3545;
+    --error-bg: #f8d7da;
+    --error-border: #f5c6cb;
+    --success-green: #198754; /* Consider using primary-color if fits */
+    --success-bg: #d1e7dd; /* Consider using lighter primary-color tint */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Match HomePage */
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--text-medium); /* Match HomePage */
+    background-color: var(--bg-medium); /* Use standard medium bg */
+    line-height: 1.7; /* Match HomePage */
+    font-size: 16px;
+}
+
+.container {
+    max-width: 1140px; /* Match HomePage */
+    margin: 0 auto;
+    padding: 0 15px; /* Match HomePage */
+}
+
+h1, h2, h3, h4, h5, h6 { /* Match HomePage */
+    color: var(--text-dark);
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    font-weight: 600;
+}
+/* Match HomePage sizes */
+h1 { font-size: 2.5rem; font-weight: 700; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+
+a {
+    color: var(--primary-color); /* Match HomePage */
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--secondary-color); /* Match HomePage */
+    text-decoration: none; /* Remove underline default */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Match HomePage */
+}
+
+ul { /* Added from HomePage */
+    list-style: none;
+    padding-left: 0;
+}
+
+
+/* --- Utility Classes --- */
+.error-message {
+    color: var(--error-red);
+    background-color: var(--error-bg);
+    border: 1px solid var(--error-border);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    font-size: 0.95rem; /* Ensure readability */
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Header (Matches HomePage Style) --- */
+.main-header {
+    background-color: var(--bg-light);
+    padding: 15px 0; /* Match HomePage */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Match HomePage shadow */
+    transition: background-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    /* Remove gradient border or adapt */
+    /* border-bottom: 4px solid transparent; */
+    /* border-image: var(--accent-gradient) 1; */ /* Using HomePage gradient */
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo { /* Match HomePage */
+    display: flex;
+    align-items: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    gap: var(--spacing-sm);
+    text-decoration: none; /* Ensure no underline */
+}
+.logo:hover {
+     color: var(--secondary-color); /* Match HomePage logo hover */
+     text-decoration: none;
+}
+
+.logo img {
+    height: 40px; /* Adjusted size */
+    /* Optional: Add HomePage hover animation if desired */
+    /* transition: transform var(--transition-speed) ease; */
+}
+/* .logo:hover img { transform: rotate(-5deg); } */
+
+
+.main-nav ul { /* Match HomePage Nav */
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 25px; /* Match HomePage gap */
+}
+
+.main-nav li { margin: 0; }
+
+.main-nav a {
+    color: var(--text-medium); /* Match HomePage */
+    font-weight: 500;
+    padding: 5px 0; /* Match HomePage */
+    position: relative;
+    border-radius: 0; /* Remove radius */
+    background-color: transparent; /* Remove bg */
+    transition: color var(--transition-speed) ease; /* Match HomePage transition */
+}
+
+.main-nav a::after { /* Match HomePage underline */
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--accent-gradient);
+    transition: width var(--transition-speed) ease;
+}
+
+.main-nav a:hover,
+.main-nav a.active {
+    color: var(--text-dark); /* Match HomePage */
+    background-color: transparent; /* Ensure no bg */
+    text-decoration: none;
+}
+
+.main-nav a:hover::after,
+.main-nav a.active::after { /* Match HomePage */
+    width: 100%;
+}
+
+/* --- Buttons (Adapted from HomePage.css) --- */
+.btn { /* Base Button Style */
+    display: inline-flex; /* Use flex for alignment */
+    align-items: center;
+    justify-content: center;
+    padding: 12px 28px;
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-speed) ease;
+    text-align: center;
+    line-height: 1.5;
+    white-space: nowrap;
+}
+
+.btn-primary { /* Primary Button Style (like HomePage) */
+    background: var(--accent-gradient);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(0, 128, 128, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--accent-gradient-hover);
+    box-shadow: var(--shadow-hover); /* Use standard hover shadow */
+    transform: translateY(-2px);
+    color: var(--text-light);
+}
+
+.btn-secondary { /* Secondary Button Style (like HomePage) */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+    border-color: var(--primary-color); /* Keep border consistent */
+}
+
+/* Specific Button Usage */
+
+
+
+.main-action { /* Apply primary style to enhance button */
+    width: 100%;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md); /* Adjust padding if needed */
+    font-size: 1.1rem;
+}
+
+/* Icon Buttons */
+.icon-button {
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--primary-color); /* Use primary color */
+    padding: var(--spacing-sm);
+    border-radius: 50%;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+    line-height: 1;
+}
+.icon-button:hover {
+    background-color: rgba(0, 128, 128, 0.1); /* Light primary color hover */
+    color: var(--primary-color);
+}
+.icon-button.clear-button { color: var(--error-red); }
+.icon-button.clear-button:hover { background-color: rgba(220, 53, 69, 0.1); color: var(--error-red); }
+
+
+/* Disabled State for All Buttons */
+.btn:disabled,
+.btn[disabled],
+.icon-button:disabled,
+.icon-button[disabled],
+.fab:disabled,
+.fab[disabled] {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    background-image: none; /* Remove gradient on disabled primary */
+    background-color: #ccc; /* Generic disabled background */
+    color: #666;
+    border-color: #ccc;
+}
+.btn-primary:disabled, .btn-primary[disabled] {
+    background: #999; /* Darker gray for disabled primary */
+    color: #f0f0f0;
+    box-shadow: none;
+}
+.btn-secondary:disabled, .btn-secondary[disabled] {
+    background: transparent;
+    color: #aaa;
+    border-color: #ccc;
+    box-shadow: none;
+}
+
+.mobile-menu-toggle {
+    display: none; /* Hidden by default */
+    background: none;
+    border: none;
+    font-size: 1.8rem; /* Match HomePage */
+    cursor: pointer;
+    color: var(--text-dark); /* Match HomePage */
+    padding: var(--spacing-sm);
+    border-radius: var(--border-radius);
+    transition: background-color var(--transition-speed) ease;
+}
+.mobile-menu-toggle:hover {
+    background-color: rgba(0, 0, 0, 0.05); /* Subtle dark hover */
+}
+
+/* --- Tool Introduction --- */
+.tool-intro {
+    text-align: center;
+    padding: var(--spacing-xl) 0;
+    margin-bottom: var(--spacing-lg);
+}
+.tool-intro h1 {
+    /* Use standard dark heading or keep gradient */
+    /* color: var(--text-dark); */ /* Option 1: Standard */
+    background: var(--accent-gradient); /* Option 2: Gradient Text */
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: var(--spacing-sm);
+}
+.tool-intro p {
+    font-size: 1.1rem;
+    color: var(--text-medium); /* Match HomePage text */
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Card Style (Matches HomePage) --- */
+.card {
+    background-color: var(--bg-light); /* Standard light */
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow); /* Standard shadow */
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    transition: box-shadow var(--transition-speed) ease, transform var(--transition-speed) ease;
+    overflow: hidden;
+}
+.card:hover { /* Add HomePage hover effect */
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* --- Rewriter Tool Layout --- */
+#rewriter-tool {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--spacing-lg);
+    align-items: start;
+}
+
+/* --- Controls Panel --- */
+.controls-panel {
+    /* Inherits card styles */
+    height: fit-content;
+    position: sticky;
+    top: calc(var(--spacing-lg) + 80px); /* Adjust based on actual header height + gap */
+}
+.controls-panel h2 {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 3px solid;
+    border-image: var(--accent-gradient) 1; /* Use standard gradient */
+    padding-bottom: var(--spacing-sm);
+    color: var(--text-dark); /* Standard heading color */
+}
+
+.control-group {
+    margin-bottom: var(--spacing-md);
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    font-size: 0.95rem;
+    color: var(--text-medium); /* Standard medium text */
+}
+
+.control-group select,
+.control-group input[type="text"] {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--bg-light);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    min-height: 45px; /* Match HomePage input feel */
+}
+.control-group select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 1em;
+    padding-right: calc(var(--spacing-md) * 2.5);
+}
+
+.control-group select:focus,
+.control-group input[type="text"]:focus { /* Match HomePage focus */
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.25);
+}
+
+/* Toggle Switch Styles */
+.toggle-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
+}
+.toggle-group label:first-child {
+    margin-bottom: 0;
+    flex-grow: 1;
+    padding-right: var(--spacing-md);
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+  flex-shrink: 0;
+}
+.switch input { display: none; }
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: var(--transition-speed);
+  border-radius: 26px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: var(--transition-speed);
+  border-radius: 50%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+input:checked + .slider {
+  background-color: var(--primary-color); /* Use primary color */
+}
+input:focus + .slider { /* Match HomePage focus */
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.25);
+}
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* --- I/O Panels --- */
+.io-panels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+.panel { /* Apply card styles */
+    /* Inherits from .card */
+    display: flex;
+    flex-direction: column;
+    min-height: 450px;
+}
+
+.panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+}
+.panel-header h3 {
+    margin-bottom: 0;
+    color: var(--text-dark); /* Standard heading */
+    font-weight: 600;
+}
+.panel-header div {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+/* .panel-header .icon-button { Styles defined above } */
+
+.panel textarea {
+    flex-grow: 1;
+    width: 100%;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    font-size: 1rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 300px;
+    background-color: #fdfdfd; /* Slightly off-white */
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    color: var(--text-medium);
+}
+.panel textarea:focus { /* Use secondary color for textarea focus */
+    outline: none;
+    border-color: var(--secondary-color);
+    background-color: #fff;
+    box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.25);
+}
+
+.text-info {
+    font-size: 0.9rem;
+    color: var(--text-medium); /* Use standard medium */
+    opacity: 0.8;
+    margin-top: var(--spacing-sm);
+    text-align: right;
+    padding-right: var(--spacing-xs);
+}
+
+/* --- Output Panel Specifics --- */
+.output-panel #outputPlaceholder {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-medium); /* Standard medium */
+    text-align: center;
+    min-height: 200px;
+    border: 2px dashed var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    background-color: var(--bg-medium);
+    opacity: 0.7;
+}
+.output-panel #outputPlaceholder::before {
+    content: '✨';
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    color: var(--primary-color); /* Use primary color */
+}
+
+/* Loading state */
+#outputLoading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-xl);
+    flex-grow: 1;
+    min-height: 200px;
+}
+
+.spinner { /* Match HomePage Loading */
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border-left-color: var(--primary-color); /* Use primary color */
+    animation: spin 1s linear infinite;
+    margin-bottom: var(--spacing-md);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#outputLoading p {
+    font-weight: 500;
+    color: var(--primary-color);
+}
+
+/* Error message */
+#outputError {
+    display: none; /* Controlled by JS */
+}
+
+/* Output results container */
+#outputResults {
+    display: none; /* Controlled by JS */
+    animation: fadeIn 0.5s ease; /* Keep fade-in */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Output Version Tabs */
+.version-tabs {
+    display: flex;
+    margin-bottom: var(--spacing-lg);
+    border-bottom: 2px solid var(--border-color);
+    flex-wrap: wrap;
+}
+
+.tab-link {
+    padding: var(--spacing-sm) var(--spacing-lg);
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-medium); /* Use standard medium text */
+    transition: border-color var(--transition-speed) ease, color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.tab-link:hover {
+    color: var(--primary-color); /* Use primary color on hover */
+    background-color: rgba(0, 128, 128, 0.05); /* Subtle primary hover */
+}
+
+.tab-link.active {
+    border-bottom-color: var(--primary-color); /* Use primary color for active */
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+.tab-content h4 {
+    color: var(--primary-color); /* Use primary color */
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Comparison View & Diff Highlight */
+.comparison-view {
+    background-color: var(--bg-medium);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-lg);
+    border: 1px solid var(--border-color);
+    max-height: 450px;
+    overflow-y: auto;
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+/* Keep semantic diff colors unless they clash */
+.diff-output ins {
+    background-color: var(--success-bg);
+    color: var(--success-green);
+    text-decoration: none;
+    padding: 1px 3px;
+    border-radius: 3px;
+}
+.diff-output del {
+    background-color: var(--error-bg);
+    color: var(--error-red);
+    text-decoration: line-through;
+    padding: 1px 3px;
+    border-radius: 3px;
+}
+
+/* Analysis Metrics */
+.analysis-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--spacing-md);
+    font-size: 0.9rem;
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: rgba(0, 128, 128, 0.05); /* Light primary bg */
+    border: 1px solid rgba(0, 128, 128, 0.2);
+    border-radius: var(--border-radius);
+}
+.analysis-metrics div {
+    background: var(--bg-light); /* Use standard light bg */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Lighter shadow for inner elements */
+    text-align: center;
+    color: var(--text-medium); /* Standard label color */
+}
+.analysis-metrics span {
+    font-weight: 600;
+    color: var(--primary-color); /* Use primary color */
+    display: block;
+    margin-top: var(--spacing-xs);
+    font-size: 1.1em;
+}
+
+/* Specialized Features */
+.specialized-features {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px dashed var(--border-color);
+}
+.specialized-features h4 {
+    color: var(--secondary-color); /* Use secondary color for emphasis */
+    margin-bottom: var(--spacing-md);
+}
+.specialized-features ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 0.95rem;
+    color: var(--text-medium); /* Standard text */
+}
+.specialized-features li {
+    margin-bottom: var(--spacing-sm);
+    padding-left: var(--spacing-lg);
+    position: relative;
+}
+.specialized-features li::before { /* Match HomePage checkmark */
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+.specialized-features li strong {
+    color: var(--text-dark);
+}
+
+
+/* Output Actions */
+#outputActions {
+    display: none; /* Controlled by JS */
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+#outputActions select { /* Style like other inputs */
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    background-color: var(--bg-light);
+    cursor: pointer;
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    min-height: 40px; /* Consistent height */
+}
+#outputActions select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.25);
+}
+/* #outputActions .icon-button { Styles defined above } */
+
+
+/* Loader within Button */
+.loader {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid var(--text-light); /* White spinner on gradient */
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 1s linear infinite;
+  display: none; /* Controlled by JS */
+  vertical-align: middle;
+}
+.main-action .btn-text {
+    display: inline;
+    margin-right: var(--spacing-sm);
+}
+/* JS toggles display */
+
+
+/* --- Floating Action Button (FAB) --- */
+.fab { /* Style like primary button */
+    position: fixed;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 60px;
+    height: 60px;
+    background: var(--accent-gradient); /* Use standard gradient */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow); /* Standard shadow */
+    cursor: pointer;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease, background var(--transition-speed) ease;
+    z-index: 999;
+}
+.fab:hover {
+    transform: scale(1.1); /* Keep scale */
+    box-shadow: var(--shadow-hover); /* Standard hover shadow */
+    background: var(--accent-gradient-hover); /* Standard hover gradient */
+}
+.fab:active {
+    transform: scale(1);
+    box-shadow: var(--shadow);
+}
+/* Disabled state handled globally */
+
+
+/* --- Modal Styles --- */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1050;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0,0,0,0.6);
+  animation: fadeInOverlay 0.3s ease;
+}
+
+@keyframes fadeInOverlay { from { opacity: 0; } to { opacity: 1; } }
+
+.modal-content {
+  background-color: var(--bg-light);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: var(--spacing-xl);
+  border-radius: var(--border-radius);
+  max-width: 90%;
+  width: 700px;
+  max-height: 85vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2); /* Keep slightly stronger shadow */
+  animation: slideInModal 0.4s ease-out;
+}
+
+@keyframes slideInModal {
+    from { top: 45%; opacity: 0; }
+    to { top: 50%; opacity: 1; }
+}
+
+.close-button {
+  color: #aaa;
+  position: absolute;
+  top: var(--spacing-md);
+  right: var(--spacing-md);
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  transition: color var(--transition-speed) ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    color: var(--primary-color); /* Use primary color */
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+/* --- Version History Specific Styles --- */
+#historyList {
+    margin-bottom: var(--spacing-lg);
+}
+.history-item {
+    background-color: var(--bg-medium);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+    transition: background-color 0.3s ease; /* Add subtle hover */
+}
+.history-item:hover {
+    background-color: #e9ecef; /* Slightly darker medium bg */
+}
+
+.history-item strong {
+    color: var(--primary-color); /* Primary color for timestamp */
+    flex-basis: 180px;
+    flex-shrink: 0;
+    font-weight: 500; /* Less heavy */
+}
+.history-item span {
+    flex-grow: 1;
+    color: var(--text-medium); /* Standard medium */
+    font-style: italic;
+    margin-right: var(--spacing-sm);
+    min-width: 150px;
+}
+/* Use standard button classes for history actions */
+.history-item .btn-history { /* New class for history buttons */
+    padding: var(--spacing-xs) var(--spacing-md); /* Smaller padding */
+    font-size: 0.9rem;
+    margin-left: var(--spacing-xs);
+}
+/* Remove old button styles */
+/* .history-item button { ... } */
+/* .history-item button:hover { ... } */
+/* .history-item button:last-of-type { ... } */
+/* .history-item button:last-of-type:hover { ... } */
+
+#historyComparison {
+    border-top: 1px dashed var(--border-color);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    background-color: var(--bg-medium);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+}
+#historyComparison h4 { color: var(--secondary-color); } /* Use secondary */
+#historyComparison p { font-size: 0.9rem; margin-bottom: var(--spacing-sm); color: var(--text-medium); }
+
+
+/* --- Footer (Matches HomePage Style) --- */
+.main-footer {
+    text-align: center;
+    padding: 20px 0; /* Match HomePage bottom footer padding */
+    margin-top: var(--spacing-xl);
+    background-color: var(--bg-dark); /* Standard dark */
+    color: rgba(255, 255, 255, 0.7); /* Match HomePage footer text */
+    font-size: 0.9rem; /* Match HomePage */
+    /* border-top: 1px solid var(--border-color); REMOVED - HomePage footer doesn't have top border like this */
+}
+.main-footer p { margin: 0; }
+.main-footer a { color: rgba(255, 255, 255, 0.8); } /* Match HomePage */
+.main-footer a:hover { color: var(--secondary-color); } /* Match HomePage */
+
+
+/* --- Responsive Design --- */
+.mobile-only { display: none !important; }
+
+/* Medium screens (Tablets) */
+@media (max-width: 992px) {
+    .container { padding: 0 15px; /* Match HomePage */ }
+
+    #rewriter-tool {
+        grid-template-columns: 1fr;
+    }
+    .controls-panel {
+        position: relative;
+        top: auto;
+        width: 100%;
+        margin-bottom: var(--spacing-lg);
+        /* Inherits card hover */
+    }
+    .controls-panel h2 { text-align: left; }
+
+    /* Mobile Header Adjustments */
+    .main-nav { display: none; }
+    .mobile-menu-toggle { display: block; }
+
+    /* Add mobile menu styles if needed, similar to HomePage */
+
+    .panel-toggle.mobile-only { /* Style as a secondary button */
+        display: flex !important; /* Use flex for alignment */
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 12px 28px;
+        margin-bottom: var(--spacing-md);
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        border-radius: var(--border-radius);
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: none;
+        transition: all 0.3s ease;
+    }
+     .panel-toggle.mobile-only:hover {
+        background-color: var(--primary-color);
+        color: var(--text-light);
+        transform: translateY(-2px);
+    }
+
+     .modal-content {
+        width: 90%;
+     }
+}
+
+/* Small screens (Phones) */
+@media (max-width: 768px) {
+     .container { padding: 0 15px; } /* Consistent padding */
+
+     .header-container {
+         padding: 0; /* Remove extra padding */
+     }
+     /* Optionally hide logo text if too cramped */
+     /* .logo span { display: none; } */
+     .logo img { height: 35px; }
+
+     .cta-button { padding: 10px 20px; font-size: 0.9rem; } /* Smaller button */
+
+    h1 { font-size: 2rem; } /* Match HomePage mobile */
+    h2 { font-size: 1.6rem; } /* Match HomePage mobile */
+
+    .fab {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        bottom: var(--spacing-md);
+        right: var(--spacing-md);
+    }
+    .analysis-metrics {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    }
+
+    .panel { min-height: 350px; }
+    .panel textarea { min-height: 200px; }
+
+     .modal-content {
+        padding: var(--spacing-lg);
+     }
+     .close-button { top: var(--spacing-sm); right: var(--spacing-sm); font-size: 1.8rem; }
+
+     .history-item { flex-direction: column; align-items: flex-start; }
+     .history-item strong { flex-basis: auto; margin-bottom: var(--spacing-xs); }
+     .history-item div { margin-top: var(--spacing-sm); width: 100%; text-align: right; }
+}
+
+/* Extra Small screens */
+@media (max-width: 480px) {
+     h1 { font-size: 1.8rem; }
+     .panel { padding: var(--spacing-md); }
+     .controls-panel { padding: var(--spacing-md); }
+
+     .panel-header h3 { font-size: 1.3rem; }
+     .panel-header .icon-button { font-size: 1.1rem; padding: var(--spacing-xs); }
+
+     .analysis-metrics { gap: var(--spacing-sm); }
+     .analysis-metrics div { padding: var(--spacing-sm); }
+
+     .specialized-features li { padding-left: var(--spacing-md); }
+
+     .modal-content { padding: var(--spacing-md); }
+     .modal-content h2 { font-size: 1.5rem; }
+
+     /* Stack buttons on very small screens if needed */
+     .history-item div .btn-history { width: 48%; margin: 1%; }
+}

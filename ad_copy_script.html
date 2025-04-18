@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ad Copy Generator - GemContent</title>
+    <link rel="stylesheet" href="css/ad_copy_script.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Optional: For Icons -->
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="home.html" class="logo">
+                 <!-- Add your logo file -->
+                <span><a href="home.html">GemContent</a></span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="#">Resources</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary btn-login">Login</button>
+                <button class="btn btn-primary btn-signup">Sign Up</button>
+            </div>
+            <button id="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    <nav class="mobile-nav" id="mobile-nav-menu">
+         <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="blog.html">Resources</a></li>
+            <li><a href="login.html" class="btn-login-mobile">Login</a></li>
+            <li><a href="signup.html" class="btn-signup-mobile">Sign Up</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section class="intro-section">
+            <h1>AI-Powered Ad Copy Generator</h1>
+            <p>Craft high-converting ad copy in seconds. Leverage the power of Google's Gemini AI to generate compelling headlines, descriptions, and CTAs tailored to your audience and platform.</p>
+            <div class="usage-tracker">
+                <i class="fas fa-bolt"></i> Generations Remaining: <span id="generations-left">10</span>
+                <span class="premium-tag">(Premium Feature)</span>
+            </div>
+        </section>
+
+        <section class="generator-section">
+            <form id="ad-copy-form">
+                <h2>Configure Your Ad</h2>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="ad-platform">Ad Platform:</label>
+                        <select id="ad-platform" name="ad-platform" required>
+                            <option value="Google Ads">Google Ads</option>
+                            <option value="Facebook/Meta">Facebook/Meta</option>
+                            <option value="LinkedIn Ads">LinkedIn Ads</option>
+                            <option value="Twitter/X Ads">Twitter/X Ads</option>
+                            <option value="TikTok Ads">TikTok Ads</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ad-format">Ad Format:</label>
+                        <select id="ad-format" name="ad-format" required>
+                            <option value="Search Text Ad">Search Text Ad</option>
+                            <option value="Social Media Post">Social Media Post</option>
+                            <option value="Display Ad Headline/Desc">Display Ad Headline/Desc</option>
+                            <option value="Video Script Hook/Intro">Video Script Hook/Intro</option>
+                            <option value="App Install Ad">App Install Ad</option>
+                            <option value="Shopping Ad Description">Shopping Ad Description</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-name">Product/Service Name:</label>
+                    <input type="text" id="product-name" name="product-name" placeholder="e.g., GemContent AI Writer" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="product-category">Product/Service Category:</label>
+                    <input type="text" id="product-category" name="product-category" placeholder="e.g., SaaS, Content Marketing Tool" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="target-audience">Target Audience:</label>
+                    <select id="target-audience" name="target-audience" required>
+                        <option value="Small Business Owners">Small Business Owners</option>
+                        <option value="Marketing Managers">Marketing Managers</option>
+                        <option value="Freelancers">Freelancers</option>
+                        <option value="E-commerce Brands">E-commerce Brands</option>
+                        <option value="Tech Startups">Tech Startups</option>
+                        <option value="Specify Below">-- Specify Below --</option>
+                    </select>
+                    <textarea id="target-audience-custom" name="target-audience-custom" rows="2" placeholder="Optionally, describe your audience in more detail (demographics, interests, pain points)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Key Selling Points/Features:</label>
+                    <div id="selling-points-container">
+                        <input type="text" name="selling-points[]" placeholder="e.g., Saves time writing content" required>
+                    </div>
+                    <button type="button" id="add-selling-point" class="btn btn-secondary btn-small"><i class="fas fa-plus"></i> Add More</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="primary-cta">Primary Call-to-Action (CTA):</label>
+                    <input type="text" id="primary-cta" name="primary-cta" placeholder="e.g., Start Free Trial, Learn More, Shop Now" required>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="char-limit">Character Limit (Optional):</label>
+                        <input type="number" id="char-limit" name="char-limit" placeholder="e.g., 90">
+                    </div>
+                    <div class="form-group">
+                        <label for="word-limit">Word Limit (Optional):</label>
+                        <input type="number" id="word-limit" name="word-limit" placeholder="e.g., 25">
+                    </div>
+                 </div>
+                 <small class="form-hint">Limits are suggestions for the AI, not strict enforcement here.</small>
+
+
+                <div class="form-group">
+                    <label for="tone-selector">Desired Tone:</label>
+                    <select id="tone-selector" name="tone-selector" required>
+                        <option value="Professional">Professional</option>
+                        <option value="Friendly & Approachable">Friendly & Approachable</option>
+                        <option value="Urgent & Action-Oriented">Urgent & Action-Oriented</option>
+                        <option value="Witty & Creative">Witty & Creative</option>
+                        <option value="Benefit-Driven & Persuasive">Benefit-Driven & Persuasive</option>
+                        <option value="Formal & Authoritative">Formal & Authoritative</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="generate-button" class="btn btn-primary btn-generate">
+                    <i class="fas fa-wand-magic-sparkles"></i> Generate Ad Copy
+                </button>
+            </form>
+        </section>
+
+        <div id="loading-indicator" class="loading-indicator" style="display: none;">
+            <div class="spinner"></div>
+            <p>Generating ad variations with Gemini AI...</p>
+        </div>
+
+        <section id="results-section" class="results-section" style="display: none;">
+            <h2>Generated Ad Variations (<span id="results-count">0</span>/5)</h2>
+
+            <div class="results-controls">
+                 <button id="prev-result" class="btn btn-secondary btn-small" disabled><i class="fas fa-arrow-left"></i></button>
+                 <span id="current-result-indicator">Variation 1</span>
+                 <button id="next-result" class="btn btn-secondary btn-small"><i class="fas fa-arrow-right"></i></button>
+                 <button id="copy-all-btn" class="btn btn-secondary btn-small"><i class="fas fa-copy"></i> Copy All Variations</button>
+                 <div class="export-options">
+                     <button id="export-btn" class="btn btn-secondary btn-small"><i class="fas fa-download"></i> Export</button>
+                     <div class="export-dropdown" style="display: none;">
+                         <a href="#" id="export-csv">CSV</a>
+                         <a href="#" id="export-pdf">PDF (Premium)</a>
+                         <a href="#" id="export-platform">To Platform (Premium)</a>
+                     </div>
+                 </div>
+                 <button id="save-library-btn" class="btn btn-secondary btn-small"><i class="fas fa-save"></i> Save to Library (Premium)</button>
+            </div>
+
+            <div id="results-carousel">
+                <!-- Ad variations will be injected here by JavaScript -->
+            </div>
+
+            <div class="ab-testing-recommendation">
+                <i class="fas fa-lightbulb"></i> <strong>A/B Testing Tip:</strong> Test variations with different headlines or CTAs against each other to find the best performer!
+            </div>
+        </section>
+
+        <section id="preview-section" class="preview-section" style="display: none;">
+            <h2>Ad Preview & Optimization</h2>
+            <div class="preview-controls">
+                <button id="toggle-mobile-preview" class="btn btn-secondary btn-small active"><i class="fas fa-mobile-alt"></i> Mobile</button>
+                <button id="toggle-desktop-preview" class="btn btn-secondary btn-small"><i class="fas fa-desktop"></i> Desktop</button>
+            </div>
+
+            <div id="ad-preview-container" class="ad-preview-container mobile-preview">
+                <!-- Preview will be rendered here -->
+                <div class="preview-placeholder">Select an ad variation to preview</div>
+            </div>
+
+            <div class="optimization-metrics">
+                <h3>Optimization Scorecard:</h3>
+                <div class="metric">
+                    <strong>Performance Prediction:</strong> <span id="performance-score">N/A</span> <span class="score-badge good">Good</span>
+                     <i class="fas fa-info-circle" title="Estimated potential based on structure and keywords. Not a guarantee."></i>
+                </div>
+                <div class="metric">
+                    <strong>Est. CTR Potential:</strong> <span id="ctr-estimate">N/A</span>
+                    <i class="fas fa-info-circle" title="Relative click-through rate potential compared to average ads."></i>
+                </div>
+                 <div class="metric compliance-check">
+                    <strong>Compliance Check:</strong> <span id="compliance-status">Pending...</span> <i class="fas fa-shield-alt"></i>
+                    <small>(Basic check for common issues. Always review platform policies.)</small>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+         <div class="container">
+            <p>© 2024 GemContent. All rights reserved.</p>
+            <!-- Add other footer links if needed -->
+        </div>
+    </footer>
+
+    <!-- Bottom Action Bar for Mobile -->
+    <div class="bottom-action-bar" id="bottom-action-bar">
+        <button id="generate-button-mobile" class="btn btn-primary">Generate</button>
+        <button id="copy-all-mobile" class="btn btn-secondary" disabled><i class="fas fa-copy"></i> Copy All</button>
+        <button id="view-results-mobile" class="btn btn-secondary" disabled><i class="fas fa-eye"></i> Results</button>
+    </div>
+
+    <script src="js/ad_copy_script.js"></script>
+</body>
+</html>

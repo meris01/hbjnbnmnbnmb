@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemContent - Content Rewriter & Enhancer</title>
+    <!-- ****** VERIFY THIS PATH ****** -->
+    <!-- Is your CSS file inside a folder named 'src'? -->
+    <!-- If not, change 'src/' to the correct path or remove it if the file is in the same directory -->
+    <link rel="stylesheet" href="css/your_text_enhancer_script.css">
+    <!-- ******************************** -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Font Awesome for Icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/diff_match_patch/20121119/diff_match_patch.js"></script>
+    <!-- Favicon (replace with your actual favicon) -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="home.html" class="logo">
+                <!-- Optional: <img src="path/to/your/logo.png" alt="GemContent Logo"> -->
+                <span>GemContent</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="your_text_enhancer_script.html" class="active">Rewriter Tool</a></li>
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <!-- Use standard button classes -->
+                    <li><a href="signup.html" class="btn btn-primary">Sign Up</a></li>
+                </ul>
+            </nav>
+            <!-- Use Font Awesome icon for menu toggle -->
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <!-- Add structure for mobile nav if needed, hidden by default -->
+        <!-- <nav class="mobile-nav"> ... </nav> -->
+    </header>
+
+    <main class="container">
+        <section id="introduction" class="tool-intro">
+            <h1>AI-Powered Content Rewriter & Enhancer</h1>
+            <p>Transform your existing content effortlessly. Leverage the power of Google's Gemini AI to rewrite, refine, and optimize your text for clarity, engagement, and impact.</p>
+        </section>
+
+        <section id="rewriter-tool">
+            <!-- Controls Panel -->
+            <div class="controls-panel card" id="controlsPanel">
+                <!-- Mobile toggle button - Consider styling as btn-secondary -->
+                <button class="panel-toggle mobile-only btn btn-secondary" onclick="toggleControls()" aria-expanded="false" aria-controls="controlsContent">
+                    Options <i class="fas fa-chevron-down"></i> <!-- Added icon -->
+                </button>
+                <div class="controls-content" id="controlsContent">
+                    <h2>Enhancement Controls</h2>
+
+                    <div class="control-group">
+                        <label for="purpose">Rewriting Purpose:</label>
+                        <select id="purpose">
+                            <option value="improve readability">Improve Readability</option>
+                            <option value="add detail">Add Detail</option>
+                            <option value="simplify">Simplify</option>
+                            <option value="summarize">Summarize</option>
+                            <option value="change perspective">Change Perspective</option>
+                            <option value="creative rewrite">Creative Rewrite</option>
+                            <option value="formalize">Make More Formal</option>
+                            <option value="casualize">Make More Casual</option>
+                            <option value="expand ideas">Expand on Ideas</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="tone">Tone:</label>
+                        <select id="tone">
+                            <option value="professional">Professional</option>
+                            <option value="conversational">Conversational</option>
+                            <option value="persuasive">Persuasive</option>
+                            <option value="informative">Informative</option>
+                            <option value="casual">Casual</option>
+                            <option value="humorous">Humorous</option>
+                            <option value="empathetic">Empathetic</option>
+                            <option value="authoritative">Authoritative</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="readingLevel">Reading Level:</label>
+                        <select id="readingLevel">
+                            <option value="elementary">Elementary (Grades 4-6)</option>
+                            <option value="middle school">Middle School (Grades 7-8)</option>
+                            <option value="high school">High School (Grades 9-12)</option>
+                            <option value="college">College</option>
+                            <option value="advanced">Advanced/Expert</option>
+                        </select>
+                    </div>
+
+                     <div class="control-group">
+                        <label for="lengthModifier">Length Modifier:</label>
+                        <select id="lengthModifier">
+                            <option value="keep similar">Keep Similar Length</option>
+                            <option value="condense 25%">Condense by ~25%</option>
+                            <option value="condense 50%">Condense by ~50%</option>
+                            <option value="expand 25%">Expand by ~25%</option>
+                            <option value="expand 50%">Expand by ~50%</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="keywords">Keywords to Include/Emphasize:</label>
+                        <input type="text" id="keywords" placeholder="e.g., AI content, SEO (comma-separated)">
+                    </div>
+
+                    <div class="control-group toggle-group">
+                        <label for="industryTerms">Use Industry Terminology:</label>
+                        <label class="switch" aria-label="Toggle Industry Terminology">
+                            <input type="checkbox" id="industryTerms">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <div class="control-group toggle-group">
+                        <label for="grammarCheck">Grammar & Spelling Correction:</label>
+                        <label class="switch" aria-label="Toggle Grammar and Spelling Correction">
+                            <input type="checkbox" id="grammarCheck" checked>
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+
+                    <!-- Use standard button classes -->
+                    <button id="enhanceBtn" class="btn btn-primary main-action">
+                        <span class="btn-text">Enhance Content</span>
+                        <span class="loader" style="display: none;"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Input/Output Panels -->
+            <div class="io-panels">
+                <!-- Input Panel -->
+                <div class="panel input-panel card">
+                    <div class="panel-header">
+                        <h3>Original Content</h3>
+                        <div>
+                            <!-- Using Font Awesome Icons -->
+                            <button class="icon-button" title="Paste from Clipboard" aria-label="Paste from Clipboard" onclick="pasteContent()"><i class="fas fa-paste"></i></button>
+                            <button class="icon-button clear-button" title="Clear Input" aria-label="Clear Input" onclick="clearInput()"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+                    <textarea id="originalText" placeholder="Paste or type your original content here... Minimum 10 words recommended for best results." aria-label="Original Content Input"></textarea>
+                    <div class="text-info">
+                        Words: <span id="inputWordCount">0</span> | Chars: <span id="inputCharCount">0</span>
+                    </div>
+                </div>
+
+                <!-- Output Panel -->
+                <!-- Inside the <div class="panel output-panel card"> -->
+<div class="panel-header">
+    <h3>Enhanced Content</h3>
+    <div id="outputActions" style="display: none;">
+        <!-- ADD THIS BUTTON (or similar) -->
+        <button id="copyEnhancedBtn" class="icon-button" title="Copy Enhanced Text" aria-label="Copy Enhanced Text">
+            <i class="fas fa-copy"></i>
+        </button>
+        <!-- Existing History Button -->
+        <button class="icon-button" title="View Revision History" aria-label="View Revision History" onclick="showVersionHistory()">
+            <i class="fas fa-history"></i>
+        </button>
+        <!-- Existing Export Select -->
+        <select id="exportOptions" onchange="exportContent(this.value)" aria-label="Export Options">
+            <option value="">Export <i class="fas fa-download"></i></option>
+            <option value="txt">Plain Text (.txt)</option>
+            <option value="html">HTML (.html)</option>
+            <option value="pdf" disabled>PDF (.pdf) [Lib Needed]</option>
+            <option value="docx" disabled>Word (.docx) [Lib Needed]</option>
+        </select>
+    </div>
+</div>
+<!-- ... rest of the output panel ... -->
+
+                     <div id="outputLoading" style="display: none;">
+                         <div class="spinner" role="status" aria-live="polite">
+                            <span class="visually-hidden">Loading...</span>
+                         </div>
+                         <p>Gemini AI is enhancing your content...</p>
+                     </div>
+
+                     <div id="outputError" class="error-message" role="alert" style="display: none;">
+                         <p id="errorMessageDetail">An error occurred.</p>
+                     </div>
+
+                     <div id="outputResults" style="display: none;">
+                        <div class="version-tabs" role="tablist" aria-label="Enhanced Content Versions">
+                            <button class="tab-link active" id="tab-version1" role="tab" aria-selected="true" aria-controls="version1" onclick="showVersion(event, 'version1')">Version 1</button>
+                            <button class="tab-link" id="tab-version2" role="tab" aria-selected="false" aria-controls="version2" onclick="showVersion(event, 'version2')">Version 2</button>
+                            <button class="tab-link" id="tab-version3" role="tab" aria-selected="false" aria-controls="version3" onclick="showVersion(event, 'version3')">Version 3</button>
+                        </div>
+
+                        <div id="version1" class="tab-content active" role="tabpanel" aria-labelledby="tab-version1">
+                            <h4>Version 1</h4> <!-- Removed hidden span for brevity -->
+                             <div class="comparison-view">
+                                <div class="diff-output" id="diffOutput1" aria-live="polite"></div>
+                            </div>
+                            <div class="analysis-metrics" id="analysis1" aria-label="Version 1 Analysis Metrics"></div>
+                             <!-- Add Copy button for this version -->
+                            <button class="btn btn-secondary btn-small" onclick="copyVersionContent('version1')"><i class="fas fa-copy"></i> Copy V1</button>
+                        </div>
+                        <div id="version2" class="tab-content" role="tabpanel" aria-labelledby="tab-version2">
+                            <h4>Version 2</h4>
+                             <div class="comparison-view">
+                                <div class="diff-output" id="diffOutput2" aria-live="polite"></div>
+                            </div>
+                           <div class="analysis-metrics" id="analysis2" aria-label="Version 2 Analysis Metrics"></div>
+                           <button class="btn btn-secondary btn-small" onclick="copyVersionContent('version2')"><i class="fas fa-copy"></i> Copy V2</button>
+                        </div>
+                        <div id="version3" class="tab-content" role="tabpanel" aria-labelledby="tab-version3">
+                           <h4>Version 3</h4>
+                             <div class="comparison-view">
+                                <div class="diff-output" id="diffOutput3" aria-live="polite"></div>
+                            </div>
+                           <div class="analysis-metrics" id="analysis3" aria-label="Version 3 Analysis Metrics"></div>
+                           <button class="btn btn-secondary btn-small" onclick="copyVersionContent('version3')"><i class="fas fa-copy"></i> Copy V3</button>
+                        </div>
+
+                        <div class="specialized-features">
+                            <h4>Additional Suggestions</h4>
+                            <ul id="suggestionsList">
+                                <!-- Suggestions populated by JS -->
+                                <li><i class="fas fa-lightbulb"></i> Consider adding a specific example here.</li>
+                            </ul>
+                        </div>
+                     </div>
+
+                     <div id="outputPlaceholder">
+                         <p>Your enhanced content versions and analysis will appear here.</p>
+                     </div>
+
+                </div>
+            </div>
+        </section>
+
+         <!-- Use Font Awesome Icon -->
+         <button id="fab" class="fab btn btn-primary" title="Enhance Content" aria-label="Enhance Content"><i class="fas fa-magic"></i></button>
+
+         <div id="versionHistoryModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="historyModalTitle" style="display: none;">
+            <div class="modal-content card">
+                 <!-- Use Font Awesome Icon -->
+                <button class="close-button" onclick="closeModal('versionHistoryModal')" aria-label="Close History Modal"><i class="fas fa-times"></i></button>
+                <h2 id="historyModalTitle">Revision History</h2>
+                <div id="historyList">
+                    <!-- History items populated by JS -->
+                    <!-- Example Structure JS will create:
+                    <div class="history-item">
+                        <strong>Timestamp</strong>
+                        <span>Snippet of text...</span>
+                        <div>
+                             Apply standard button classes
+                            <button class="btn btn-secondary btn-history btn-small" onclick="restoreHistoryItem('...')"><i class="fas fa-undo"></i> Restore</button>
+                            <button class="btn btn-secondary btn-history btn-small" onclick="compareHistoryItem('...')"><i class="fas fa-exchange-alt"></i> Compare</button>
+                        </div>
+                    </div>
+                     -->
+                    <p>No history available yet.</p>
+                </div>
+                <div id="historyComparison" style="display: none;"> <!-- Hide comparison area initially -->
+                     <h4>Comparison</h4>
+                     <div class="diff-output"></div>
+                     <button class="btn btn-secondary btn-small" onclick="closeHistoryComparison()">Close Comparison</button>
+                </div>
+            </div>
+         </div>
+
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2023 GemContent. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </div>
+    </footer>
+
+    <!-- Ensure Font Awesome script is loaded if using icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+    <!-- JavaScript linked at the end of the body -->
+    <script src="js/your_text_enhancer_script.js"></script>
+</body>
+</html>

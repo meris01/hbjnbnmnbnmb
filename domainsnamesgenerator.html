@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Domain Ideas Generator - GemContent</title>
+    <link rel="stylesheet" href="css/domainnamesgenerator.css">
+    <!-- Add link to potential icon library if needed (e.g., Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                
+                <span><a href="home.html">GemContent</a></span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="features.html">Tools</a></li>
+                    
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="tool-intro container">
+            <h1>AI-Powered Domain Ideas Generator</h1>
+            <p>Struggling to find the perfect domain name? Let GemContent's AI analyze your ideas, industry, and keywords to generate unique, brandable, and available domain suggestions in seconds.</p>
+        </section>
+
+        <section class="tool-form container">
+            <form id="domain-generator-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="business-name">Business/Project Name</label>
+                        <input type="text" id="business-name" name="businessName" placeholder="e.g., Luna Cafe, TechSpark">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="industry">Industry/Niche</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select Industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="health">Health & Wellness</option>
+                            <option value="food">Food & Beverage</option>
+                            <option value="finance">Finance</option>
+                            <option value="travel">Travel</option>
+                            <option value="education">Education</option>
+                            <option value="realestate">Real Estate</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="keywords">Keywords (add relevant terms)</label>
+                    <div id="keywords-container">
+                        <div class="keyword-input-group">
+                            <input type="text" name="keywords[]" placeholder="e.g., coffee, sustainable, crypto">
+                            <button type="button" class="btn-remove-keyword" style="display: none;"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                    <button type="button" id="add-keyword-btn" class="btn btn-secondary btn-small"><i class="fas fa-plus"></i> Add Keyword</button>
+                </div>
+
+                <div class="form-group">
+                    <label>Domain Extension Preferences</label>
+                    <div class="checkbox-group horizontal">
+                        <label><input type="checkbox" name="extensions" value=".com" checked> .com</label>
+                        <label><input type="checkbox" name="extensions" value=".io"> .io</label>
+                        <label><input type="checkbox" name="extensions" value=".net"> .net</label>
+                        <label><input type="checkbox" name="extensions" value=".org"> .org</label>
+                        <label><input type="checkbox" name="extensions" value=".ai"> .ai</label>
+                        <label><input type="checkbox" name="extensions" value=".co"> .co</label>
+                         <label><input type="checkbox" name="extensions" value=".app"> .app</label>
+                        <!-- Add more as needed -->
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Name Style Preferences</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="nameStyle" value="short" checked> Short & Memorable</label>
+                        <label><input type="radio" name="nameStyle" value="brandable"> Brandable</label>
+                        <label><input type="radio" name="nameStyle" value="keyword"> Keyword-rich</label>
+                        <label><input type="radio" name="nameStyle" value="creative"> Creative/Unique</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="max-length">Maximum Character Count: <span id="max-length-value">15</span></label>
+                    <input type="range" id="max-length" name="maxLength" min="5" max="25" value="15" class="slider">
+                </div>
+
+                 <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="availability-filter" name="availabilityFilter" checked>
+                        Prioritize Available Domains
+                    </label>
+                </div>
+
+                <details class="advanced-options">
+                    <summary>Advanced Options <i class="fas fa-chevron-down"></i></summary>
+                    <div class="advanced-options-content">
+                        <div class="form-group">
+                             <label class="checkbox-label">
+                                <input type="checkbox" name="alliteration"> Prefer Alliteration
+                            </label>
+                        </div>
+                         <div class="form-group">
+                             <label class="checkbox-label">
+                                <input type="checkbox" name="includeNumbers"> Allow Numbers
+                            </label>
+                        </div>
+                         <div class="form-group">
+                             <label class="checkbox-label">
+                                <input type="checkbox" name="allowHyphens"> Allow Hyphens
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="prefix">Suggest Prefix</label>
+                            <input type="text" id="prefix" name="prefix" placeholder="e.g., get, my, the">
+                        </div>
+                         <div class="form-group">
+                            <label for="suffix">Suggest Suffix</label>
+                            <input type="text" id="suffix" name="suffix" placeholder="e.g., labs, studio, online">
+                        </div>
+                    </div>
+                </details>
+
+                <div class="form-actions">
+                    <button type="submit" id="generate-btn" class="btn btn-primary btn-large">
+                        <i class="fas fa-lightbulb"></i> Generate Ideas
+                    </button>
+                     <div id="usage-tracker" class="usage-tracker">
+                        Generations remaining: <span id="generations-left">10</span>
+                        <div class="usage-bar-container"><div id="usage-bar" class="usage-bar"></div></div>
+                    </div>
+                </div>
+            </form>
+        </section>
+
+        <section id="results-section" class="results-section container" style="display: none;">
+            <h2>Generated Domain Ideas</h2>
+
+            <div class="results-controls">
+                 <div class="view-toggle">
+                    <button id="list-view-btn" class="active"><i class="fas fa-list"></i> List</button>
+                    <button id="grid-view-btn"><i class="fas fa-th-large"></i> Grid</button>
+                </div>
+                <div class="sort-filter">
+                    <select id="sort-options">
+                        <option value="relevance">Sort by: Relevance</option>
+                        <option value="availability">Sort by: Availability</option>
+                        <option value="length">Sort by: Length (Shortest)</option>
+                         <option value="length-desc">Sort by: Length (Longest)</option>
+                        <option value="brandability">Sort by: Brandability</option>
+                         <option value="memorability">Sort by: Memorability</option>
+                    </select>
+                    <button id="filter-btn-desktop" class="btn btn-secondary filter-btn"><i class="fas fa-filter"></i> Filter</button>
+                </div>
+                 <div class="export-options">
+                     <button id="export-csv-btn" class="btn btn-secondary btn-small"><i class="fas fa-file-csv"></i> CSV</button>
+                      <button id="export-pdf-btn" class="btn btn-secondary btn-small"><i class="fas fa-file-pdf"></i> PDF</button>
+                 </div>
+            </div>
+             <div class="compare-section" id="compare-section" style="display:none;">
+                <h4>Domain Comparison (<span id="compare-count">0</span>/5)</h4>
+                <div id="compare-tray" class="compare-tray"></div>
+                <button id="compare-now-btn" class="btn btn-primary btn-small" disabled>Compare Now</button>
+                 <button id="clear-compare-btn" class="btn btn-secondary btn-small">Clear</button>
+            </div>
+            <div id="history-section" class="history-section">
+                <!-- History items will be loaded here -->
+            </div>
+
+             <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="spinner"></div>
+                <p>Generating brilliant domain ideas with AI...</p>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Oops! Something went wrong. Please try again.</p>
+                <p id="error-details"></p>
+            </div>
+
+            <div id="domain-results" class="domain-results list-view">
+                <!-- Domain result cards will be injected here by JavaScript -->
+                <!-- Example Card Structure (for reference):
+                <div class="domain-card available primary">
+                    <div class="card-header">
+                        <h3 class="domain-name">AwesomeDomain.com</h3>
+                        <span class="availability-status available">Available</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="evaluation-metrics">
+                            <span title="Brandability"><i class="fas fa-star"></i> 8/10</span>
+                            <span title="Memorability"><i class="fas fa-brain"></i> 9/10</span>
+                            <span title="SEO Friendliness"><i class="fas fa-search"></i> Good</span>
+                            <span title="Pronunciation"><i class="fas fa-volume-up"></i> Clear</span>
+                            <span title="Typo Susceptibility"><i class="fas fa-keyboard"></i> Low</span>
+                            <span title="Trademark Risk"><i class="fas fa-trademark"></i> Low</span>
+                        </div>
+                        <div class="domain-tags">
+                            <span class="tag tag-primary">Primary</span>
+                            <span class="tag tag-com">.com</span>
+                            <span class="tag tag-short">Short</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                         <button class="btn btn-secondary btn-small btn-compare" data-domain="AwesomeDomain.com"><i class="fas fa-balance-scale"></i> Compare</button>
+                        <button class="btn btn-secondary btn-small btn-favorite" data-domain="AwesomeDomain.com"><i class="far fa-heart"></i> Favorite</button>
+                        <a href="#" class="btn btn-primary btn-small btn-register" target="_blank">Register</a>
+                    </div>
+                </div>
+                 -->
+            </div>
+             <div id="no-results" style="display:none; text-align: center; padding: 30px;">No domains found matching your criteria. Try adjusting your inputs.</div>
+        </section>
+
+        <!-- Mobile Specific Elements -->
+        <button id="fab-filter" class="fab fab-filter" aria-label="Filter Results">
+            <i class="fas fa-filter"></i>
+        </button>
+         <button id="fab-favorites" class="fab fab-favorites" aria-label="View Favorites">
+            <i class="fas fa-heart"></i>
+            <span class="fab-badge" id="favorites-count">0</span>
+        </button>
+
+
+        <div id="filter-sheet" class="bottom-sheet">
+            <div class="sheet-header">
+                <h4>Filter Results</h4>
+                <button id="close-sheet-btn" class="close-sheet-btn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="sheet-content">
+                 <div class="form-group">
+                    <label>Availability</label>
+                    <div class="radio-group">
+                        <label><input type="radio" name="filterAvailability" value="all" checked> All</label>
+                        <label><input type="radio" name="filterAvailability" value="available"> Available Only</label>
+                        <label><input type="radio" name="filterAvailability" value="taken"> Taken Only</label>
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Filter by Extension</label>
+                    <div class="checkbox-group" id="filter-extensions">
+                        <!-- Extension checkboxes will be populated dynamically -->
+                    </div>
+                </div>
+                 <div class="form-group">
+                    <label>Filter by Characteristics</label>
+                    <div class="checkbox-group" id="filter-characteristics">
+                         <label><input type="checkbox" name="filterChars" value="primary"> Primary</label>
+                        <label><input type="checkbox" name="filterChars" value="short"> Short</label>
+                        <label><input type="checkbox" name="filterChars" value="brandable"> Brandable</label>
+                        <label><input type="checkbox" name="filterChars" value="keyword"> Keyword-rich</label>
+                        <label><input type="checkbox" name="filterChars" value="creative"> Creative</label>
+                        <!-- Add more as needed -->
+                    </div>
+                </div>
+                 <button id="apply-filters-btn" class="btn btn-primary">Apply Filters</button>
+            </div>
+        </div>
+         <div id="overlay" class="overlay"></div>
+
+         <!-- Detailed View Modal (Example Structure) -->
+        <div id="detailed-view-modal" class="modal">
+             <div class="modal-content">
+                 <span class="close-modal-btn">×</span>
+                 <h3 id="modal-domain-name">Domain Name</h3>
+                 <p>Detailed information, larger evaluation scores, registration options etc.</p>
+                 <!-- Add more detailed content here -->
+             </div>
+         </div>
+
+    </main>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>© <span id="current-year"></span> GemContent. All rights reserved.</p>
+            <!-- Add footer links if needed -->
+        </div>
+    </footer>
+
+    <script src="js/domain_script.js"></script>
+</body>
+</html>

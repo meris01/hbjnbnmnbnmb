@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemContent - AI Content Creation Powered by Gemini</title>
+    <link rel="stylesheet" href="css/home.css"> <!-- Using home.css as per your provided code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header id="header">
+        <div class="container header-container">
+            <!-- Consider adding a small logo icon if desired: <i class="fa-solid fa-gem"></i> -->
+            <a href="home.html" class="logo">GemContent</a>
+            <nav>
+                <ul>
+                    <li><a href="how-it-works.hyml">How It Works</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="#use-cases">Use Cases</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="">FAQ</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                 <!-- Optional icons for buttons -->
+                <button class="btn btn-secondary"><i class="fa-solid fa-right-to-bracket"></i> <a href="login.html">Login</a></button>
+                <button class="btn btn-primary"><i class="fa-solid fa-user-plus"></i><a href="signup.html">Sign Up</a></button>
+            </div>
+            <button id="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fa-solid fa-bars"></i></button> <!-- Use Font Awesome icon for toggle -->
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Create Smarter Content, Faster with Gemini AI</h1>
+                <p>Leverage Google's cutting-edge Gemini API to generate high-quality blog posts, marketing copy, social media updates, and more in seconds.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary"><i class="fa-solid fa-rocket"></i> Get Started for Free</button>
+                    <button class="btn btn-secondary"><i class="fa-solid fa-circle-play"></i> Watch Demo</button>
+                </div>
+            </div>
+            <div class="dashboard-preview">
+                <img src="https://via.placeholder.com/550x350/E0E0E0/B0B0B0?text=GemContent+Dashboard+Preview" alt="GemContent Dashboard Preview">
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">How GemContent Works</h2>
+            <p class="section-subtitle">Generate amazing content in just 3 simple steps.</p>
+            <div class="steps-container">
+                <div class="step">
+                     <!-- Add icons for steps -->
+                    <div class="step-icon"><i class="fa-solid fa-file-lines fa-2x"></i></div>
+                    <div class="step-number">1</div>
+                    <h3>Choose a Template</h3>
+                    <p>Select from dozens of pre-built templates for various content types (blog posts, emails, ads, etc.).</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-keyboard fa-2x"></i></div>
+                    <div class="step-number">2</div>
+                    <h3>Provide Input</h3>
+                    <p>Enter a brief description, keywords, or topic details to guide the Gemini AI.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon"><i class="fa-solid fa-wand-magic-sparkles fa-2x"></i></div>
+                    <div class="step-number">3</div>
+                    <h3>Generate & Refine</h3>
+                    <p>Receive high-quality content drafts instantly. Edit, refine, and export your final piece.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section-padding section-alternate">
+        <div class="container">
+            <h2 class="section-title">Powerful Features</h2>
+            <p class="section-subtitle">Everything you need to supercharge your content creation workflow.</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <!-- Using a relevant icon for Gemini/AI -->
+                    <div class="feature-icon"><i class="fa-solid fa-brain"></i></div>
+                    <h3>Gemini Powered</h3>
+                    <p>Utilizes Google's latest and most capable AI model for superior content quality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-layer-group"></i></div>
+                    <h3>Multiple Content Types</h3>
+                    <p>Generate blog articles, social media posts, ad copy, emails, product descriptions, and more.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-sliders"></i></div>
+                    <h3>Customizable Tone</h3>
+                    <p>Adjust the writing style and tone (professional, casual, witty, etc.) to match your brand voice.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>SEO Optimization</h3>
+                    <p>Incorporate relevant keywords naturally to improve search engine visibility.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h3>Plagiarism Checker</h3>
+                    <p>Ensure originality with built-in checks against existing online content.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fa-solid fa-users"></i></div>
+                    <h3>Team Collaboration</h3>
+                    <p>Work together with your team members on content projects within the platform.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Who Can Benefit?</h2>
+            <p class="section-subtitle">GemContent is perfect for professionals across various fields.</p>
+            <div class="use-cases-grid">
+                <div class="use-case-card">
+                    <div class="use-case-icon"><i class="fa-solid fa-bullhorn"></i></div>
+                    <h3>Marketers</h3>
+                    <p>Craft compelling ad copy, email campaigns, landing pages, and social media content.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon"><i class="fa-solid fa-pen-nib"></i></div>
+                    <h3>Bloggers & Writers</h3>
+                    <p>Generate blog post ideas, outlines, and full articles quickly, overcoming writer's block.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon"><i class="fa-solid fa-store"></i></div>
+                    <h3>Small Businesses</h3>
+                    <p>Create website content, product descriptions, and marketing materials without a large team.</p>
+                </div>
+                <div class="use-case-card">
+                    <div class="use-case-icon"><i class="fa-solid fa-briefcase"></i></div>
+                    <h3>Agencies</h3>
+                    <p>Scale content production for multiple clients efficiently and maintain high quality.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section-padding section-alternate">
+        <div class="container">
+            <h2 class="section-title">Loved by Creators</h2>
+            <p class="section-subtitle">Don't just take our word for it. See what our users say.</p>
+            <div class="testimonials-container">
+                <div class="testimonial">
+                     <!-- Optional quote icon -->
+                     <span class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+                    <blockquote>"GemContent has revolutionized how we create blog posts. The quality powered by Gemini is outstanding, saving us hours each week!"</blockquote>
+                    <cite>
+                        <span class="author">Alice Chen</span>
+                        <span class="title">Content Manager, TechForward</span>
+                    </cite>
+                </div>
+                <div class="testimonial">
+                    <span class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+                    <blockquote>"As a freelance marketer, speed and quality are crucial. GemContent delivers on both. The different content templates are incredibly useful."</blockquote>
+                    <cite>
+                        <span class="author">David Rodriguez</span>
+                        <span class="title">Digital Marketing Consultant</span>
+                    </cite>
+                </div>
+                <div class="testimonial">
+                    <span class="testimonial-quote-icon"><i class="fa-solid fa-quote-left"></i></span>
+                    <blockquote>"We were skeptical about AI content, but GemContent impressed us. It helps our small team produce consistent, high-quality social media updates."</blockquote>
+                    <cite>
+                        <span class="author">Sarah Miller</span>
+                        <span class="title">Owner, The Local Boutique</span>
+                    </cite>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-padding">
+        <div class="container">
+            <h2 class="section-title">Simple, Transparent Pricing</h2>
+            <p class="section-subtitle">Choose the plan that fits your content creation needs.</p>
+            <div class="pricing-container">
+                <div class="pricing-tier">
+                     <!-- Optional icons for plans -->
+                    <h3><i class="fa-solid fa-seedling"></i> Free</h3>
+                    <div class="price">$0<span>/month</span></div>
+                    <p>Get started and explore basic features.</p>
+                    <ul>
+                        <li><i class="fa-solid fa-check text-success"></i> Access to Gemini Basic Model</li>
+                        <li><i class="fa-solid fa-check text-success"></i> 5,000 Words/Month</li>
+                        <li><i class="fa-solid fa-check text-success"></i> 10+ Content Templates</li>
+                        <li><i class="fa-solid fa-check text-success"></i> Standard Support</li>
+                        <li><i class="fa-solid fa-times text-muted"></i> Advanced Features</li>
+                        <li><i class="fa-solid fa-times text-muted"></i> Priority Support</li>
+                    </ul>
+                    <button class="btn btn-secondary">Start for Free</button>
+                </div>
+                <div class="pricing-tier premium">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3><i class="fa-solid fa-star"></i> Premium</h3>
+                    <div class="price">$29<span>/month</span></div>
+                    <p>Unlock the full power of GemContent.</p>
+                    <ul>
+                         <li><i class="fa-solid fa-check text-success"></i> Access to Gemini Pro Model</li>
+                        <li><i class="fa-solid fa-check text-success"></i> 100,000 Words/Month</li>
+                        <li><i class="fa-solid fa-check text-success"></i> 50+ Content Templates</li>
+                        <li><i class="fa-solid fa-check text-success"></i> Customizable Tone & Style</li>
+                        <li><i class="fa-solid fa-check text-success"></i> SEO Optimization Tools</li>
+                        <li><i class="fa-solid fa-check text-success"></i> Plagiarism Checker</li>
+                        <li><i class="fa-solid fa-check text-success"></i> Team Collaboration (3 Seats)</li>
+                        <li><i class="fa-solid fa-check text-success"></i> Priority Support</li>
+                    </ul>
+                    <button class="btn btn-primary">Choose Premium</button>
+                </div>
+            </div>
+             <p class="pricing-note">Need more? <a href="contact.html">Contact us</a> for Enterprise solutions.</p>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section-padding section-alternate">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-accordion">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What is GemContent?</span>
+                         <!-- Keep + or replace with icon. If replacing, JS needs update -->
+                        <span class="faq-icon">+</span>
+                        <!-- Example with icon: <span class="faq-icon"><i class="fa-solid fa-plus"></i></span> -->
+                    </button>
+                    <div class="faq-answer">
+                        <p>GemContent is an AI-powered content creation platform that utilizes Google's advanced Gemini API to help users generate various types of high-quality written content quickly and efficiently.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does the Gemini API integration work?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We securely connect to Google's Gemini API. When you provide input (like a topic or keywords), we send it to the Gemini model, which processes the request and generates the content based on its vast training data. We then present the results to you within the GemContent interface.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Is the generated content original?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes, the Gemini models are designed to generate unique content. While AI learns from existing text, it creates new sentences and paragraphs. Our Premium plan also includes a plagiarism checker for added assurance.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What types of content can I create?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can create a wide range of content, including blog posts, articles, social media updates, marketing emails, ad copy, website headlines, product descriptions, video scripts outlines, and much more. We are constantly adding new templates.</p>
+                    </div>
+                </div>
+                 <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I cancel my subscription anytime?</span>
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Absolutely. You can cancel your Premium subscription at any time through your account settings. You will retain access to Premium features until the end of your current billing cycle.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="cta" class="section-padding">
+        <div class="container cta-container">
+            <h2>Ready to Elevate Your Content?</h2>
+            <p>Sign up for GemContent today and experience the future of AI-powered content creation.</p>
+            <button class="btn btn-primary btn-large"><i class="fa-solid fa-bolt"></i> Start Your Free Trial Now</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer id="footer">
+        <div class="container footer-container">
+            <div class="footer-about">
+                <a href="home.html" class="logo">GemContent</a>
+                <p>AI-powered content creation using Google Gemini. Create smarter, faster.</p>
+                 <div class="contact-info">
+                    <p><i class="fa-solid fa-envelope"></i> Email: <a href="mailto:merisdabhi00@gmail.com.com">merisdabhi00@gmail.com</a></p>
+                    <p><i class="fa-solid fa-location-dot"></i> Address: 123 AI Lane, Tech City, TX 75001</p>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-legal">
+                 <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="pricing.html">Privacy Policy</a></li>
+                    <li><a href="#">Cookie Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                 <h4>Follow Us</h4>
+                 <div class="social-media">
+                     <!-- Replace placeholders with Brand icons -->
+                     <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                     <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                     <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                 </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 GemContent. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/home.js"></script> <!-- Using home.js as per your provided code -->
+</body>
+</html>

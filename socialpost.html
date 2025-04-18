@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Post Creator - GemContent</title>
+    <link rel="stylesheet" href="css/socialpost.css">
+    <link rel="icon" href="images/gemcontent-favicon.png"> <!-- Add your favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Add icon library if needed, e.g., Font Awesome -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script> <!-- Replace with your kit or use SVGs -->
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="home.html" class="logo">GemContent</a>
+                <!-- Or use text: <h1>GemContent</h1> -->
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">blog</a></li>
+                    <li><a href="features.html" class="active">Tools</a></li>
+                </ul>
+            </nav>
+            <div class="account-controls">
+                <button class="btn btn-secondary">Log In</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i> <!-- Or use hamburger icon SVG -->
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="tool-intro container">
+            <h1>AI-Powered Social Media Post Creator</h1>
+            <p>Effortlessly generate engaging, platform-optimized social media content in seconds. Let GemContent's AI handle the writing, so you can focus on strategy.</p>
+        </section>
+
+        <section class="creator-tool container">
+            <form id="post-creator-form">
+                <h2>Create Your Post</h2>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="platform">Platform <span class="required">*</span></label>
+                        <select id="platform" name="platform" required>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Twitter">Twitter (X)</option>
+                            <option value="LinkedIn">LinkedIn</option>
+                            <option value="Facebook">Facebook</option>
+                            <option value="TikTok">TikTok</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purpose">Content Purpose <span class="required">*</span></label>
+                        <select id="purpose" name="purpose" required>
+                            <option value="promote">Promote Product/Service</option>
+                            <option value="engage">Engage Audience (Question/Poll)</option>
+                            <option value="educate">Educate / Inform</option>
+                            <option value="announce">Make an Announcement</option>
+                            <option value="share">Share News/Article</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group span-two">
+                        <label for="topic">Key Topic / Promotion <span class="required">*</span></label>
+                        <input type="text" id="topic" name="topic" placeholder="e.g., Launching new AI feature, Summer sale details" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="voice">Brand Voice <span class="required">*</span></label>
+                        <select id="voice" name="voice" required>
+                            <option value="professional">Professional</option>
+                            <option value="casual">Casual & Friendly</option>
+                            <option value="witty">Witty & Humorous</option>
+                            <option value="inspirational">Inspirational</option>
+                            <option value="informative">Informative & Direct</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="target-url">Target URL (Optional)</label>
+                        <input type="url" id="target-url" name="target-url" placeholder="https://yourwebsite.com/page">
+                    </div>
+
+                     <div class="form-group">
+                        <label for="product-image">Upload Image (Optional)</label>
+                        <input type="file" id="product-image" name="product-image" accept="image/*">
+                        <small>Helps AI suggest visual content.</small>
+                    </div>
+
+                     <!-- IMPORTANT: API Key Input - NEVER do this in production -->
+                     <!-- <div class="form-group">
+                        <label for="api-key">Gemini API Key (DEV ONLY) <span class="required">*</span></label>
+                        <input type="password" id="api-key" name="api-key" required placeholder="Paste your key here for testing">
+                         <small style="color: red; font-weight: bold;">Never expose this field or your key in a public website!</small>
+                     </div> -->
+                     <!-- We will use the hardcoded key in JS for this example, which is also insecure -->
+
+                    <div class="form-group span-two">
+                        <label for="instructions">Special Instructions (Optional)</label>
+                        <textarea id="instructions" name="instructions" rows="3" placeholder="e.g., Mention our 20% discount code SUMMERAI, focus on ease of use"></textarea>
+                    </div>
+                </div>
+
+                <button type="submit" id="generate-btn" class="btn btn-primary btn-generate">
+                    <span class="btn-text">Generate Posts</span>
+                    <span class="loading-spinner" style="display: none;"></span>
+                </button>
+                <p id="error-message" class="error-message" style="display: none;"></p>
+            </form>
+        </section>
+
+        <section id="results" class="results container" style="display: none;">
+            <h2>Generated Post Variations</h2>
+            <div id="post-variations" class="post-variations-grid">
+                <!-- Generated posts will be appended here -->
+            </div>
+             <div class="premium-features-notice">
+                <p><i class="fas fa-star"></i> Want more? Upgrade to GemContent Premium to:</p>
+                <ul>
+                    <li>Save posts to your content calendar</li>
+                    <li>Schedule posts directly (integrations coming soon)</li>
+                    <li>A/B test variations</li>
+                    <li>View post history and performance</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Placeholder for Mobile Bottom Sheet -->
+        <div id="bottom-sheet" class="bottom-sheet">
+             <button id="close-bottom-sheet" class="close-bottom-sheet">×</button>
+            <h4>More Options</h4>
+            <!-- Add mobile-specific options here -->
+            <p>Additional mobile actions could go here.</p>
+        </div>
+         <div class="overlay" id="overlay"></div>
+
+    </main>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>© 2024 GemContent. All rights reserved.</p>
+            <!-- Add footer links if needed -->
+        </div>
+    </footer>
+
+    <script src="js/social_post_script.js"></script>
+</body>
+</html>

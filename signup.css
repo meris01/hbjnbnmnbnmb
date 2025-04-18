@@ -1,0 +1,270 @@
+/* --- Base Styles & Variables (COPY FROM HomePage.css or other consistent page) --- */
+:root {
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #FF8C00; /* Dark Orange */
+    --accent-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    --accent-gradient-hover: linear-gradient(90deg, #006666, #cc7000);
+    --text-dark: #333;
+    --text-light: #f8f9fa;
+    --text-medium: #555;
+    --bg-light: #ffffff;
+    --bg-medium: #f8f9fa;
+    --bg-dark: #343a40;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif;
+    --transition-speed: 0.3s;
+    /* Semantic colors */
+    --error-red: #dc3545;
+    --success-green: #198754;
+}
+
+/* --- Global Resets & Base Elements (COPY FROM HomePage.css or other consistent page) --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-family); color: var(--text-medium); line-height: 1.7; background-color: var(--bg-medium); /* Use medium bg for contrast with card */ }
+.container { max-width: 1140px; margin: 0 auto; padding: 0 15px; }
+h1, h2, h3, h4, h5, h6 { color: var(--text-dark); margin-bottom: 0.75em; line-height: 1.3; font-weight: 600; }
+h1 { font-size: 2.8rem; font-weight: 700; }
+h2 { font-size: 2.2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.2rem; }
+p { margin-bottom: 1rem; }
+a { color: var(--primary-color); text-decoration: none; transition: color var(--transition-speed) ease; }
+a:hover { color: var(--secondary-color); }
+img { max-width: 100%; height: auto; display: block; }
+ul { list-style: none; padding-left: 0; }
+
+/* --- Utilities (COPY FROM HomePage.css or other consistent page) --- */
+.section-padding { padding: 60px 0; } /* Slightly less padding than 80px maybe */
+.section-alternate { background-color: var(--bg-medium); }
+.section-title { text-align: center; margin-bottom: 1rem; }
+.section-subtitle { text-align: center; max-width: 600px; margin: 0 auto 2rem auto; /* Less margin bottom */ color: var(--text-medium); font-size: 1.1rem; }
+.section-subtitle.small { font-size: 1rem; margin-bottom: 2.5rem; /* More space before form */ }
+.card { background-color: var(--bg-light); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 40px; /* Generous padding */ margin-bottom: 30px; border: 1px solid var(--border-color); }
+/* Remove card hover for static elements like forms */
+/* .card:hover { transform: translateY(-5px); box-shadow: var(--shadow-hover); transition: all var(--transition-speed) ease; } */
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+/* --- Buttons (COPY FROM HomePage.css or other consistent page) --- */
+.btn { display: inline-block; padding: 12px 28px; border: none; border-radius: var(--border-radius); font-size: 1rem; font-weight: 500; cursor: pointer; transition: all var(--transition-speed) ease; text-align: center; line-height: 1.5; width: 100%; /* Make form buttons full width by default */}
+.btn-primary { background: var(--accent-gradient); color: var(--text-light); box-shadow: 0 4px 10px rgba(0, 128, 128, 0.3); }
+.btn-primary:hover { background: var(--accent-gradient-hover); box-shadow: var(--shadow-hover); transform: translateY(-2px); color: var(--text-light); }
+.btn-secondary { background-color: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+.btn-secondary:hover { background-color: var(--primary-color); color: var(--text-light); transform: translateY(-2px); }
+/* Loader */
+.loader { border: 3px solid rgba(255,255,255,0.3); border-top: 3px solid var(--text-light); border-radius: 50%; width: 18px; height: 18px; animation: spin 1s linear infinite; display: inline-block; vertical-align: middle; margin-left: 8px; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+/* Ensure header/footer buttons are not full width */
+#header .auth-buttons .btn, #footer .btn { width: auto; }
+
+
+/* --- Header (COPY FROM HomePage.css or other consistent page) --- */
+#header { background-color: var(--bg-light); padding: 15px 0; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); transition: background-color 0.3s ease, box-shadow 0.3s ease; }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.8rem; font-weight: 700; color: var(--primary-color); }
+.logo:hover { color: var(--secondary-color); }
+#header nav ul { display: flex; gap: 25px; }
+#header nav ul li a { color: var(--text-medium); font-weight: 500; padding: 5px 0; position: relative; }
+#header nav ul li a::after { content: ''; position: absolute; width: 0; height: 2px; bottom: -2px; left: 0; background: var(--accent-gradient); transition: width 0.3s ease; }
+#header nav ul li a:hover::after,
+#header nav ul li a.active::after { width: 100%; }
+#header nav ul li a:hover,
+#header nav ul li a.active { color: var(--text-dark); }
+.auth-buttons { display: flex; gap: 15px; }
+#mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.8rem; cursor: pointer; color: var(--text-dark); }
+/* Add mobile nav CSS from HomePage if not already global */
+
+/* --- Signup Section Specific Styles --- */
+
+
+
+.signup-container {
+    max-width: 500px; /* Limit width of signup box */
+    margin: 0 auto; /* Center the box */
+    padding: 40px; /* Consistent padding from .card */
+}
+
+.signup-container .section-title {
+    margin-bottom: 0.5rem; /* Less space below title */
+}
+
+#signup-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Space between form groups */
+}
+
+.form-group {
+    margin-bottom: 0; /* Rely on gap */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-medium);
+    font-size: 0.95rem;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: var(--font-family);
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    line-height: 1.5;
+    min-height: 45px; /* Consistent height */
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.25);
+}
+
+/* Input validation styles (optional) */
+.form-group input:invalid:not(:placeholder-shown) {
+    border-color: var(--error-red);
+}
+.form-group input:invalid:not(:placeholder-shown):focus {
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.25); /* Red focus */
+}
+
+
+#signupBtn {
+    margin-top: 1.5rem; /* More space above button */
+    display: inline-flex; /* Needed for loader alignment */
+    align-items: center;
+    justify-content: center;
+}
+
+/* Form Feedback Styling */
+.form-feedback {
+    margin-top: 0.5rem; /* Space above feedback */
+    margin-bottom: 0.5rem; /* Space below feedback */
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    font-size: 0.95rem;
+    display: none; /* Hidden by default */
+    text-align: center;
+}
+.form-feedback.success {
+    background-color: #d1e7dd;
+    color: var(--success-green);
+    border: 1px solid #badbcc;
+}
+.form-feedback.error {
+    background-color: #f8d7da;
+    color: var(--error-red);
+    border: 1px solid #f5c6cb;
+}
+
+.switch-auth-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: var(--text-medium);
+}
+.switch-auth-link a {
+    font-weight: 500;
+    /* Inherits link colors */
+}
+
+/* Optional: Social Login Buttons */
+/* .social-login {
+    margin-top: 2rem;
+    text-align: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+}
+.social-login p {
+    margin-bottom: 1rem;
+    color: var(--text-medium);
+    font-size: 0.9rem;
+}
+.btn-social {
+    width: 100%;
+    margin-bottom: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    font-weight: 500;
+}
+.btn-social:hover {
+    background-color: var(--bg-medium);
+    border-color: #adb5bd;
+    transform: none; // Prevent lift on social buttons
+}
+.btn-social i {
+    font-size: 1.2em;
+}
+.btn-google { // Optional specific colors
+    // color: #DB4437;
+} */
+
+
+/* --- Footer (COPY FROM HomePage.css or other consistent page) --- */
+#footer { background-color: var(--bg-dark); color: var(--text-light); padding: 60px 0 0 0; font-size: 0.95rem; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; padding-bottom: 40px; }
+#footer .logo { color: var(--text-light); margin-bottom: 1rem; display: inline-block; font-size: 1.8rem; font-weight: 700; }
+.footer-about p { color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem; line-height: 1.6; }
+.contact-info p { margin-bottom: 0.5rem; color: rgba(255, 255, 255, 0.7); }
+.contact-info a { color: rgba(255, 255, 255, 0.8); }
+.contact-info a:hover { color: var(--secondary-color); }
+#footer h4 { color: var(--text-light); margin-bottom: 1rem; font-size: 1.1rem; position: relative; padding-bottom: 10px; }
+#footer h4::after { content: ''; position: absolute; left: 0; bottom: 0; width: 40px; height: 2px; background: var(--accent-gradient); }
+#footer ul li { margin-bottom: 0.8rem; }
+#footer ul li a { color: rgba(255, 255, 255, 0.7); transition: color 0.3s ease, padding-left 0.3s ease; }
+#footer ul li a:hover { color: var(--text-light); padding-left: 5px; }
+.social-media a { display: inline-block; width: 35px; height: 35px; line-height: 35px; text-align: center; border-radius: 50%; background-color: rgba(255, 255, 255, 0.1); color: var(--text-light); margin-right: 10px; transition: background-color 0.3s ease, transform 0.3s ease; font-size: 1rem; }
+.social-media a:hover { background: var(--accent-gradient); transform: translateY(-3px); color: var(--text-light); }
+.footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; padding: 20px 0; margin-top: 20px; }
+.footer-bottom p { margin-bottom: 0; color: rgba(255, 255, 255, 0.6); font-size: 0.9rem; }
+
+/* --- Responsive Design (Adapt from HomePage.css or other consistent page) --- */
+@media (max-width: 991.98px) {
+    /* Inherit header/footer responsive styles */
+    .container { max-width: 720px; }
+    #header nav { display: none; }
+    #header .auth-buttons { display: none; }
+    #mobile-menu-toggle { display: block; }
+    .footer-container { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+}
+
+@media (max-width: 767.98px) {
+    .container { max-width: 540px; }
+    html { font-size: 15px; }
+    h2 { font-size: 1.8rem; }
+    .section-padding { padding: 40px 0; }
+    .card { padding: 30px; }
+    .footer-container { text-align: center; gap: 40px; }
+    .footer-about, .footer-links, .footer-legal, .footer-social { margin-bottom: 20px; }
+    #footer h4::after { left: 50%; transform: translateX(-50%); }
+    .footer-social .social-media { justify-content: center; display: flex; }
+}
+
+@media (max-width: 575.98px) {
+    html { font-size: 14px; }
+    h2 { font-size: 1.6rem; }
+    .signup-container {
+        padding: 25px; /* Less padding on small screens */
+        margin-left: 15px;
+        margin-right: 15px;
+        max-width: calc(100% - 30px); /* Ensure it doesn't touch edges */
+    }
+    /* Removed empty ruleset for .btn */
+    .auth-buttons .btn { width: auto; margin-bottom: 0; }
+}

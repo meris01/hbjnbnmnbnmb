@@ -1,0 +1,853 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap'); /* Ensure Poppins is imported */
+
+/* --- Variables (Copied from HomePage.css) --- */
+:root {
+    --primary-color: #008080; /* Teal */
+    --secondary-color: #FF8C00; /* Dark Orange */
+    --accent-gradient: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    --accent-gradient-hover: linear-gradient(90deg, #006666, #cc7000);
+    --text-dark: #333;
+    --text-light: #f8f9fa;
+    --text-medium: #555;
+    --bg-light: #ffffff;
+    --bg-medium: #f8f9fa;
+    --bg-dark: #343a40;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 6px 20px rgba(0, 0, 0, 0.15);
+    --border-radius: 8px;
+    --font-family: 'Poppins', sans-serif; /* Added from HomePage */
+    --input-height: 45px; /* Kept from ToolPage */
+    --container-width: 1140px; /* Kept from ToolPage */
+}
+
+/* --- Base Styles --- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Match HomePage base */
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.7; /* Match HomePage */
+    color: var(--text-medium); /* Match HomePage body text */
+    background-color: var(--bg-light); /* Match HomePage default background */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+main {
+    flex-grow: 1;
+    padding-top: 20px; /* Keep specific padding */
+    padding-bottom: 80px; /* Space for bottom action bar */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-dark); /* Match HomePage headings */
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    font-weight: 600; /* Match HomePage */
+}
+/* Match HomePage sizes */
+h1 { font-size: 2.2em; font-weight: 700; } /* Adjusted weight slightly */
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.4em; } /* Removed specific orange color */
+h4 { font-size: 1.2rem; }
+
+p {
+    margin-bottom: 1rem; /* Match HomePage */
+}
+
+a {
+    color: var(--primary-color); /* Match HomePage */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--secondary-color); /* Match HomePage */
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Match HomePage */
+}
+
+ul { /* Added from HomePage */
+    list-style: none;
+    padding-left: 0;
+}
+
+/* --- Buttons (Copied & Adapted from HomePage.css) --- */
+.btn {
+    display: inline-block;
+    padding: 12px 28px; /* Match HomePage */
+    border: none;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    line-height: 1.5;
+    white-space: nowrap; /* Keep from ToolPage */
+}
+
+.btn i {
+    margin-right: 5px;
+}
+
+.btn-primary {
+    background: var(--accent-gradient);
+    color: var(--text-light);
+    box-shadow: 0 4px 10px rgba(0, 128, 128, 0.3); /* Teal shadow like HomePage */
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: var(--accent-gradient-hover);
+    box-shadow: 0 6px 15px rgba(0, 128, 128, 0.4);
+    transform: translateY(-2px);
+    color: var(--text-light); /* Ensure text remains light */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px); /* Add consistent hover transform */
+}
+
+.btn-small { /* Keep small variant if needed */
+    padding: 5px 10px;
+    font-size: 0.85rem;
+    /* Adjust padding to be proportionally smaller */
+    padding: 8px 16px;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+
+/* --- Header (Adapted to match HomePage Style) --- */
+.main-header {
+    background-color: var(--bg-light); /* Match HomePage header background */
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Match HomePage shadow */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--primary-color); /* Match HomePage logo color */
+    font-size: 1.8rem; /* Match HomePage logo size */
+    font-weight: 700; /* Match HomePage logo weight */
+    text-decoration: none;
+}
+.logo:hover {
+     color: var(--secondary-color); /* Match HomePage logo hover */
+}
+
+.logo img { /* Adjust if logo image needs specific styling for light bg */
+    height: 35px; /* Keep size */
+    margin-right: 10px;
+    /* filter: brightness(0) invert(1); REMOVED: Not needed for light bg */
+}
+
+/* Desktop Nav Styling (Matches HomePage) */
+.main-nav { display: none; } /* Hidden on mobile by default */
+.main-nav ul {
+    list-style: none;
+    display: flex;
+    gap: 25px;
+}
+.main-nav a {
+    color: var(--text-medium); /* Match HomePage nav link color */
+    font-weight: 500;
+    padding: 5px 0;
+    position: relative;
+    transition: color 0.3s ease; /* Add transition */
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -2px;
+    left: 0;
+    background: var(--accent-gradient); /* Match HomePage underline */
+    transition: width 0.3s ease;
+}
+.main-nav a:hover {
+    color: var(--text-dark); /* Match HomePage nav link hover color */
+}
+.main-nav a:hover::after, .main-nav a.active::after {
+    width: 100%;
+}
+
+.auth-buttons { display: none; gap: 15px;} /* Match HomePage gap */
+
+#mobile-menu-toggle {
+    display: block; /* Show hamburger */
+    background: none;
+    border: none;
+    color: var(--text-dark); /* Match HomePage toggle color */
+    font-size: 1.8rem;
+    cursor: pointer;
+}
+
+/* Mobile Nav Styling (Adapted from HomePage) */
+.mobile-nav {
+    display: none; /* Hidden by default */
+    background-color: var(--bg-light); /* Match HomePage mobile menu background */
+    padding: 15px 0; /* Match HomePage */
+    position: absolute;
+    top: 65px; /* Adjust based on header height */
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-shadow: var(--shadow); /* Match HomePage */
+    /* border-radius removed to match full-width style */
+}
+.mobile-nav.active { display: block; }
+.mobile-nav ul {
+    list-style: none;
+    flex-direction: column; /* Added */
+    align-items: center; /* Added */
+    gap: 10px; /* Added */
+}
+.mobile-nav li {
+    margin-bottom: 0; /* Remove default margin */
+    width: 100%; /* Added */
+    text-align: center; /* Added */
+}
+.mobile-nav a {
+    color: var(--text-medium); /* Match HomePage mobile link color */
+    display: block;
+    padding: 10px 0; /* Match HomePage */
+    width: 100%; /* Added */
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+.mobile-nav a:hover {
+    background-color: var(--bg-medium); /* Subtle hover */
+    color: var(--text-dark);
+}
+/* Mobile Auth Buttons (Style like HomePage) */
+.mobile-nav .auth-buttons-mobile {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px 30px; /* Match HomePage */
+    border-top: 1px solid var(--border-color); /* Match HomePage */
+    margin-top: 10px; /* Space above buttons */
+}
+.mobile-nav .auth-buttons-mobile .btn {
+    width: 100%; /* Match HomePage */
+}
+/* Hide old mobile buttons if using the structure above */
+.mobile-nav .btn-login-mobile,
+.mobile-nav .btn-signup-mobile { display: none; }
+
+
+/* --- Intro Section --- */
+.intro-section {
+    text-align: center;
+    padding: 30px 15px; /* Adjusted padding */
+    margin-bottom: 30px;
+    background-color: var(--bg-medium); /* Use standard medium background */
+    /* Removed complex gradient background */
+    border-radius: var(--border-radius);
+    /* Use standard shadow */
+    box-shadow: var(--shadow);
+    /* Subtle pattern option from HomePage (Uncomment if desired) */
+    /* background-image: linear-gradient(45deg, #fdfdfd 25%, transparent 25%), linear-gradient(-45deg, #fdfdfd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #fdfdfd 75%), linear-gradient(-45deg, transparent 75%, #fdfdfd 75%);
+    background-size: 20px 20px; */
+}
+.intro-section h1 {
+    color: var(--text-dark); /* Standard heading color */
+    /* Optional: Keep gradient text using new variables */
+    /* background: -webkit-linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; */
+}
+.intro-section p {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: var(--text-medium); /* Use standard medium text */
+}
+.usage-tracker {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-medium); /* Use standard medium text */
+}
+.usage-tracker i { color: var(--secondary-color); } /* Use secondary color */
+.premium-tag {
+    font-size: 0.75rem;
+    background-color: var(--primary-color); /* Use primary color */
+    color: white;
+    padding: 2px 5px;
+    border-radius: 3px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+
+/* --- Form Styling --- */
+.generator-section {
+    background-color: var(--bg-light); /* Standard light background */
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow); /* Standard shadow */
+    margin-bottom: 30px;
+}
+.generator-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-dark); /* Standard heading color */
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Default to single column */
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: var(--text-medium); /* Slightly lighter than heading */
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px 15px;
+    min-height: var(--input-height);
+    border: 1px solid var(--border-color); /* Standard border color */
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-family: var(--primary-font);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Use primary color for focus border */
+    box-shadow: 0 0 0 3px rgba(0, 128, 128, 0.25); /* Match teal focus ring from HomePage btn */
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+#selling-points-container input {
+    margin-bottom: 10px;
+}
+#add-selling-point {
+    margin-top: 5px;
+    align-self: flex-start;
+}
+
+.form-hint {
+    font-size: 0.85rem;
+    color: var(--text-medium); /* Use standard medium text */
+    opacity: 0.8; /* Slightly faded */
+    margin-top: -15px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.btn-generate {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1rem;
+    margin-top: 10px;
+}
+
+/* --- Loading Indicator --- */
+.loading-indicator {
+    text-align: center;
+    padding: 40px 20px;
+    margin: 30px 0;
+    background-color: var(--bg-medium); /* Standard medium background */
+    border-radius: var(--border-radius);
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-left-color: var(--primary-color); /* Use primary color */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 15px auto;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.loading-indicator p {
+    font-weight: 500;
+    color: var(--primary-color); /* Use primary color */
+}
+
+/* --- Results Section --- */
+.results-section {
+    background-color: var(--bg-light); /* Standard light background */
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow); /* Standard shadow */
+    margin-bottom: 30px;
+}
+.results-section h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--text-dark); /* Standard heading color */
+}
+.results-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid var(--border-color); /* Standard border */
+    padding-bottom: 15px;
+}
+#current-result-indicator {
+    font-weight: 500;
+    margin: 0 10px;
+    color: var(--text-medium);
+}
+
+.export-options {
+    position: relative;
+    display: inline-block;
+}
+.export-dropdown {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-light); /* Standard background */
+    min-width: 140px;
+    box-shadow: var(--shadow); /* Standard shadow */
+    z-index: 1;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    top: 100%;
+    margin-top: 5px;
+    border: 1px solid var(--border-color); /* Add border */
+}
+.export-dropdown a {
+    color: var(--text-medium); /* Standard text */
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+}
+.export-dropdown a:hover {
+    background-color: var(--bg-medium); /* Standard medium bg for hover */
+    color: var(--text-dark);
+ }
+.export-options:hover .export-dropdown { display: block; }
+
+
+#results-carousel {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.ad-variation {
+    background-color: var(--bg-medium); /* Standard medium background */
+    border: 1px solid var(--border-color); /* Standard border */
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    display: none; /* Controlled by JS */
+    /* Use HomePage card transition */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* animation: fadeIn 0.5s ease; Removed for consistency, hover provides feedback */
+}
+.ad-variation.active { display: block; }
+
+/* Add HomePage card hover effect */
+.ad-variation:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Remove old fade-in */
+/* @keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+} */
+
+.ad-variation h3 {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color); /* Standard border */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-dark); /* Standard heading color */
+}
+.ad-variation h4 {
+    margin-top: 15px;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--primary-color); /* Use primary color for emphasis */
+}
+
+.ad-element {
+    margin-bottom: 12px;
+    position: relative;
+    padding-right: 30px;
+}
+.ad-element span { display: block; }
+
+.element-text {
+    background-color: var(--bg-light); /* Use light background inside medium */
+    padding: 8px 12px;
+    border-radius: 4px; /* Smaller radius for nested elements */
+    border: 1px solid var(--border-color);
+    margin-bottom: 5px;
+    color: var(--text-medium);
+}
+
+.char-count {
+    font-size: 0.8rem;
+    color: var(--text-medium); /* Use standard medium text */
+    opacity: 0.8;
+    display: inline-block;
+    margin-left: 5px;
+}
+.char-count.over-limit {
+    color: #dc3545; /* Keep standard error red */
+    font-weight: bold;
+    opacity: 1;
+}
+
+.copy-btn {
+    position: absolute;
+    top: 5px;
+    right: 0;
+    background: none;
+    border: none;
+    color: var(--primary-color); /* Use primary color */
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 5px;
+    opacity: 0.7;
+    transition: opacity 0.2s ease, color 0.2s ease; /* Add color transition */
+}
+.copy-btn:hover {
+    opacity: 1;
+    color: var(--secondary-color); /* Use secondary color on hover */
+}
+.copy-btn i { font-size: 1rem; }
+
+.copy-full-ad-btn {
+    margin-top: 10px;
+}
+
+.ab-testing-recommendation {
+    margin-top: 20px;
+    background-color: #e9f5f5; /* Lighter teal tint from HomePage FAQ active */
+    border-left: 4px solid var(--primary-color); /* Use primary color */
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-medium); /* Use standard text */
+}
+.ab-testing-recommendation i { color: var(--primary-color); margin-right: 8px; }
+
+/* --- Preview Section --- */
+.preview-section {
+    background-color: var(--bg-light); /* Standard light background */
+    padding: 25px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow); /* Standard shadow */
+    margin-bottom: 30px;
+}
+.preview-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-dark); /* Standard heading color */
+}
+
+.preview-controls {
+    text-align: center;
+    margin-bottom: 25px;
+}
+.preview-controls .btn { margin: 0 5px; }
+/* Style active button like a secondary button */
+.preview-controls .btn.active {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border-color: var(--primary-color);
+    transform: none; /* No lift when active */
+    box-shadow: none;
+}
+/* Ensure non-active buttons look like default secondary */
+.preview-controls .btn:not(.active) {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+}
+.preview-controls .btn:not(.active):hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-2px);
+}
+
+
+.ad-preview-container {
+    border: 1px solid var(--border-color); /* Standard border */
+    border-radius: var(--border-radius);
+    padding: 20px;
+    background-color: var(--bg-medium); /* Standard medium background */
+    margin-bottom: 25px;
+    transition: all 0.3s ease;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.ad-preview-container.mobile-preview {
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 0.9rem;
+}
+.ad-preview-container.desktop-preview {
+    max-width: 650px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.preview-placeholder {
+    text-align: center;
+    color: var(--text-medium); /* Standard medium text */
+    opacity: 0.7;
+    padding: 30px;
+}
+
+/* Example Google Search Ad Preview Style (Colors Adjusted) */
+.google-search-preview { font-family: Arial, sans-serif; font-size: 14px; }
+.google-search-preview .ad-label { font-size: 12px; color: #202124; margin-right: 5px; background-color: #e9f5f5; padding: 1px 4px; border-radius: 2px; font-weight: bold;} /* Teal tint bg */
+.google-search-preview .display-url { color: #202124; font-size: 14px; margin-bottom: 2px; word-break: break-all;}
+.google-search-preview .headline { color: #1a0dab; font-size: 20px; margin-bottom: 3px; font-weight: normal; } /* Keep link color */
+.google-search-preview .headline:hover { text-decoration: underline; }
+.google-search-preview .description { color: var(--text-medium); line-height: 1.4; font-size: 14px; } /* Use standard text */
+.google-search-preview .cta-preview { color: #1a0dab; font-weight: bold; margin-top: 5px; display: inline-block; }
+
+/* Example Facebook Post Preview Style (Colors Adjusted) */
+.facebook-post-preview { font-family: Helvetica, Arial, sans-serif; }
+.facebook-post-preview .profile-info { display: flex; align-items: center; margin-bottom: 8px; }
+.facebook-post-preview .profile-pic { width: 40px; height: 40px; background-color: #ccc; border-radius: 50%; margin-right: 10px; }
+.facebook-post-preview .profile-name { font-weight: bold; color: #1d2129; }
+.facebook-post-preview .post-body { margin-bottom: 10px; color: #1d2129; font-size: 15px; line-height: 1.4;}
+.facebook-post-preview .post-image { background-color: var(--bg-medium); height: 200px; margin-bottom: 10px; text-align: center; line-height: 200px; color: var(--text-medium); font-style: italic; border-radius: 4px;} /* Use standard bg/text */
+.facebook-post-preview .link-preview { border: 1px solid var(--border-color); margin-bottom: 10px; background-color: var(--bg-medium); padding: 10px; border-radius: 4px;} /* Use standard border/bg */
+.facebook-post-preview .link-domain { font-size: 12px; color: var(--text-medium); text-transform: uppercase; } /* Use standard text */
+.facebook-post-preview .link-title { font-weight: bold; color: #1d2129; font-size: 16px; }
+.facebook-post-preview .link-description { font-size: 14px; color: var(--text-medium); margin-bottom: 8px;} /* Use standard text */
+.facebook-post-preview .cta-button { background-color: #f5f6f7; border: 1px solid #ccd0d5; color: #4b4f56; padding: 8px 16px; text-align: center; font-weight: bold; border-radius: 4px; display: inline-block; margin-top: 5px; } /* Keep FB style */
+
+
+.optimization-metrics {
+    margin-top: 25px;
+    background-color: var(--bg-medium); /* Standard medium background */
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+.optimization-metrics h3 {
+    margin-bottom: 15px;
+    color: var(--primary-color); /* Use primary color for emphasis */
+}
+.metric {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--text-medium);
+}
+.metric strong { margin-right: 5px; color: var(--text-dark); }
+.metric i { color: var(--text-medium); opacity: 0.7; margin-left: 5px; cursor: help; }
+.score-badge {
+    display: inline-block;
+    padding: 2px 6px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 10px;
+    color: white;
+    margin-left: 5px;
+}
+/* Keep standard status colors */
+.score-badge.good { background-color: #28a745; }
+.score-badge.average { background-color: #ffc107; color: #333; }
+.score-badge.poor { background-color: #dc3545; }
+
+.compliance-check {
+    border-top: 1px dashed var(--border-color); /* Use standard border */
+    padding-top: 10px;
+    margin-top: 10px;
+    color: var(--text-medium);
+}
+.compliance-check i { color: var(--primary-color); } /* Use primary color */
+.compliance-check small {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--text-medium); /* Use standard text */
+    opacity: 0.8;
+    margin-top: 5px;
+}
+#compliance-status.compliant { color: #28a745; }
+#compliance-status.warning { color: #ffc107; }
+#compliance-status.error { color: #dc3545; }
+
+/* --- Footer (Matches HomePage Style) --- */
+.main-footer {
+    background-color: var(--bg-dark); /* Standard dark background */
+    color: var(--text-light); /* Standard light text */
+    padding: 20px 0;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+/* Add subtle text color like HomePage footer */
+.main-footer p {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0;
+}
+.main-footer a {
+    color: rgba(255, 255, 255, 0.8);
+}
+.main-footer a:hover {
+    color: var(--secondary-color); /* Match HomePage footer link hover */
+}
+
+
+/* --- Bottom Action Bar (Mobile Only) --- */
+.bottom-action-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: var(--accent-gradient); /* Use accent gradient */
+    padding: 10px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.15); /* Keep shadow */
+    z-index: 900;
+}
+.bottom-action-bar .btn {
+    flex-grow: 1;
+    margin: 0 5px;
+    padding: 10px 5px;
+    font-size: 0.9rem;
+}
+/* Style buttons for gradient background */
+.bottom-action-bar .btn-primary {
+    /* Inherits from .btn-primary, should look good on gradient */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Slightly adjust shadow */
+}
+.bottom-action-bar .btn-secondary {
+    /* Make secondary stand out on gradient */
+    background-color: rgba(255, 255, 255, 0.9);
+    color: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.bottom-action-bar .btn-secondary:hover {
+    background-color: white;
+    color: var(--secondary-color);
+}
+
+
+/* --- Responsive Design --- */
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .form-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+    .btn-generate {
+        width: auto;
+        padding: 12px 30px;
+    }
+    #mobile-menu-toggle { display: none; }
+    .main-nav { display: block; } /* Show desktop nav */
+    .auth-buttons { display: flex; } /* Show desktop auth buttons */
+    .mobile-nav { display: none !important; } /* Ensure mobile nav is hidden */
+    .bottom-action-bar { display: none; }
+    main { padding-bottom: 30px; }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+     h1 { font-size: 2.5em; }
+     h2 { font-size: 2em; }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    /* Optional: Add specific styles */
+}
+
+/* --- Utility Classes --- */
+.hidden {
+    display: none !important;
+}
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}

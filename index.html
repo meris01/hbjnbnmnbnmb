@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemContent - AI Product Description Writer</title>
+    <!-- Ensure this path is correct -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- ========== EDITED HEADER START ========== -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="home.html" class="logo">
+                <!-- Replace with your actual logo -->
+                GemContent
+            </a>
+
+            <!-- Mobile Menu Toggle Button - Moved outside Nav -->
+            <button id="mobile-menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                 ☰ <!-- Or use a Font Awesome icon like <i class="fas fa-bars"></i> -->
+            </button>
+
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contect.html">Contact</a></li>
+                    <!-- Login button removed from here -->
+                </ul>
+            </nav>
+
+            <!-- Authentication Buttons - Added -->
+            <div class="auth-buttons">
+                 <a href="login.html" class="btn btn-secondary">Login</a>
+                 <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                 <!-- Add Sign Up button if needed -->
+            </div>
+
+            <!-- Optional: Mobile Auth Buttons Container (if using the separate container approach) -->
+            <!-- <div class="auth-buttons-mobile-container">
+                 <a href="/login" class="btn btn-secondary">Login</a>
+                 <a href="/signup" class="btn btn-primary">Sign Up</a>
+            </div> -->
+
+        </div>
+    </header>
+    <!-- ========== EDITED HEADER END ========== -->
+
+    <main>
+        <section class="intro-section">
+            <div class="container">
+                <h1>AI-Powered Product Description Writer</h1>
+                <p>Leverage the power of Google's Gemini AI to craft compelling, SEO-optimized product descriptions that convert browsers into buyers. Fill out the details below and let GemContent generate unique variations tailored to your needs.</p>
+            </div>
+        </section>
+
+        <section class="tool-section">
+            <div class="container">
+                <form id="productForm">
+                    <fieldset>
+                        <legend>Basic Information</legend>
+                        <div class="form-group">
+                            <label for="productName">Product Name <span class="required">*</span></label>
+                            <input type="text" id="productName" name="productName" placeholder="e.g., Ergonomic Mesh Office Chair" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Product Category <span class="required">*</span></label>
+                            <input type="text" id="productCategory" name="productCategory" placeholder="e.g., Furniture, Office Supplies" required>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="collapsible">
+                        <legend class="collapsible-toggle">Key Features / Specifications <span class="required">*</span></legend>
+                        <div class="collapsible-content">
+                            <div id="featuresContainer" class="dynamic-input-container">
+                                <div class="form-group">
+                                    <textarea name="features[]" placeholder="e.g., Breathable mesh back, Adjustable lumbar support, 360-degree swivel" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-add" id="addFeatureBtn">+ Add More Features</button>
+                        </div>
+                    </fieldset>
+
+                     <fieldset class="collapsible">
+                        <legend class="collapsible-toggle">Product Benefits <span class="required">*</span></legend>
+                        <div class="collapsible-content">
+                             <p class="info-text">List the main benefits for the customer. Order by importance.</p>
+                            <div id="benefitsContainer" class="dynamic-input-container">
+                                <div class="form-group">
+                                     <textarea name="benefits[]" placeholder="e.g., Improves posture and reduces back pain, Keeps you cool during long work hours, Increases productivity" rows="3" required></textarea>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-add" id="addBenefitBtn">+ Add More Benefits</button>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Targeting & Tone</legend>
+                         <div class="form-group form-group-inline">
+                            <label for="targetMarketplace">Target Marketplace</label>
+                            <select id="targetMarketplace" name="targetMarketplace">
+                                <option value="general">General Website</option>
+                                <option value="amazon">Amazon</option>
+                                <option value="shopify">Shopify</option>
+                                <option value="ebay">eBay</option>
+                                <option value="etsy">Etsy</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group form-group-inline">
+                             <label for="targetAudience">Target Audience / Persona</label>
+                            <input type="text" id="targetAudience" name="targetAudience" placeholder="e.g., Remote workers, Gamers, Office managers">
+                        </div>
+                         <div class="form-group form-group-inline">
+                            <label for="brandVoice">Brand Voice</label>
+                            <select id="brandVoice" name="brandVoice">
+                                <option value="professional">Professional</option>
+                                <option value="enthusiastic">Enthusiastic</option>
+                                <option value="friendly">Friendly & Approachable</option>
+                                <option value="technical">Technical</option>
+                                <option value="playful">Playful</option>
+                                <option value="luxurious">Luxurious</option>
+                            </select>
+                        </div>
+                         <div class="form-group form-group-inline">
+                            <label for="descriptionLength">Description Length Preference</label>
+                            <select id="descriptionLength" name="descriptionLength">
+                                <option value="short">Short (approx. 50-100 words)</option>
+                                <option value="medium" selected>Medium (approx. 150-250 words)</option>
+                                <option value="long">Long (approx. 300-500 words)</option>
+                            </select>
+                        </div>
+                    </fieldset>
+
+                     <fieldset class="collapsible">
+                        <legend class="collapsible-toggle">SEO & Competitors (Optional)</legend>
+                        <div class="collapsible-content">
+                            <div class="form-group">
+                                <label for="seoKeywords">SEO Keywords</label>
+                                <input type="text" id="seoKeywords" name="seoKeywords" placeholder="e.g., ergonomic chair, mesh office chair, lumbar support">
+                                <p class="info-text">Separate keywords with commas.</p>
+                            </div>
+                            <div class="form-group">
+                                <label for="competitorProducts">Competitor Products URLs or Names</label>
+                                <textarea id="competitorProducts" name="competitorProducts" placeholder="List key competitors to differentiate against (optional)" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="submit-container">
+                        <!-- Ensure button has correct classes for styling -->
+                        <button type="submit" class="btn btn-primary btn-generate" id="generateBtn">
+                            <span class="btn-text">Generate Descriptions</span>
+                            <span class="spinner" style="display: none;"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="resultsArea" style="display: none;">
+                     <!-- Add class="section-title" if you want the specific styling -->
+                    <h2 class="section-title">Generated Descriptions</h2>
+                    <p class="info-text">Review the generated variations below. Use the copy buttons or export options.</p>
+
+                    <div class="results-container" id="resultsContainer">
+                        <!-- Results will be injected here by JavaScript -->
+                        <!-- Example Structure JS might create:
+                        <div class="result-card">
+                             <button class="btn btn-copy copy-section-btn">Copy</button>
+                             <h3>Variation Title</h3>
+                             <p>Generated description text...</p>
+                             <h4>Bullet Points:</h4>
+                             <ul><li>Point 1</li><li>Point 2</li></ul>
+                             <div class="result-meta">
+                                 <span><strong>Tone:</strong> Friendly</span>
+                                 <span><strong>Length:</strong> Medium</span>
+                             </div>
+                        </div>
+                         -->
+                    </div>
+
+                    <div class="results-actions">
+                         <button class="btn btn-secondary" id="exportTxtBtn">Export as TXT</button>
+                         <button class="btn btn-secondary" id="exportJsonBtn">Export as JSON</button>
+                         <button class="btn btn-premium" id="saveToLibraryBtn">
+                             <i class="fas fa-save"></i> Save to Library (Premium)
+                         </button>
+                         <button class="btn btn-premium" id="viewHistoryBtn">
+                              <i class="fas fa-history"></i> Version History (Premium)
+                         </button>
+                         <button class="btn btn-premium" id="bulkGenerateBtn">
+                             <i class="fas fa-copy"></i> Bulk Generate (Premium)
+                         </button>
+                    </div>
+                </div>
+                 <div id="errorArea" class="error-message" style="display: none;"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========== REPLACED FOOTER START ========== -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-container">
+
+                <!-- Column 1: About & Contact -->
+                <div class="footer-about">
+                    <a href="home.html" class="logo">GemContent</a>
+                    <p>Your AI partner for creating compelling content that converts. Save time and boost your sales.</p>
+                     <div class="contact-info">
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Content Lane, Suite 404, AI City</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:support@gemcontent.com">support@gemcontent.com</a></p>
+                    </div>
+                </div>
+
+                <!-- Column 2: Useful Links -->
+                <div class="footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="features.html">Features</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="faq_script.html">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 3: Legal -->
+                <div class="footer-legal">
+                     <h4>Legal</h4>
+                     <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+
+                <!-- Column 4: Social Media -->
+                 <div class="footer-social">
+                     <h4>Follow Us</h4>
+                     <p>Stay updated with our latest features and news.</p>
+                     <div class="social-media">
+                         <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                         <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                         <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                         <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                     </div>
+                 </div>
+
+            </div> <!-- /.footer-container -->
+        </div> <!-- /.container -->
+
+        <div class="footer-bottom">
+            <div class="container">
+                 <p>© 2024 GemContent. All Rights Reserved. Built with AI power.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- ========== REPLACED FOOTER END ========== -->
+
+
+    <!-- Floating Action Button (Mobile Only) -->
+    <!-- ID is for JS, class is for CSS styling -->
+    <button id="mobileGenerateFab" class="fab" aria-label="Generate Descriptions">
+        <i class="fas fa-magic"></i> <!-- Font Awesome Magic Wand Icon -->
+    </button>
+
+    <!-- Ensure this path is correct -->
+    <script src="script.js"></script>
+</body>
+</html>

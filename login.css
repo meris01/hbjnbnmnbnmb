@@ -1,0 +1,433 @@
+/* =============================
+   Auth Page Specific Styles (auth.css)
+   ============================= */
+
+/* Base Body & Font */
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: #333; /* Default text color */
+    background-color: #fff; /* Default background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure footer stays at bottom */
+}
+
+/* Basic Container (if not already in home.css) */
+.container {
+    width: 90%;
+    max-width: 1100px; /* Adjust max-width as needed */
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* =============================
+   Header Styles (Auth Pages)
+   ============================= */
+#header.auth-header {
+    background-color: #fff; /* White header background */
+    padding: 15px 0;
+    border-bottom: 1px solid #eee; /* Subtle separator */
+}
+
+.auth-header .logo {
+    color: #1abc9c; /* Teal color for the logo */
+    font-weight: 600;
+    font-size: 1.8em;
+    text-decoration: none;
+}
+
+/* Hide nav/buttons on auth pages if needed */
+.auth-header nav,
+.auth-header .auth-buttons {
+    display: none; /* Or adjust visibility as needed */
+}
+
+/* =============================
+   Main Login Section
+   ============================= */
+#login-section {
+    flex-grow: 1; /* Allows main content to push footer down */
+    padding: 50px 0; /* Vertical padding */
+    background-color: #fff; /* Ensure white background */
+}
+
+.auth-container {
+    max-width: 450px; /* Limit width of the login box */
+    margin: 0 auto; /* Center the box */
+    padding: 30px;
+    background-color: #fff; /* White background for the form area */
+    /* Optional: add a subtle shadow or border if desired */
+    /* box-shadow: 0 2px 10px rgba(0,0,0,0.1); */
+    /* border: 1px solid #eee; */
+    /* border-radius: 8px; */
+}
+
+.auth-container h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 2em;
+    font-weight: 600;
+    color: #333;
+}
+
+.auth-subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #666;
+    font-size: 1em;
+}
+
+/* =============================
+   Form Styles
+   ============================= */
+#login-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left; /* Align labels/inputs left */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.9em;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box; /* Include padding and border in element's total width */
+}
+
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus {
+    outline: none;
+    border-color: #1abc9c; /* Teal focus border */
+    box-shadow: 0 0 0 2px rgba(26, 188, 156, 0.2); /* Subtle focus glow */
+}
+
+/* Placeholder styling */
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #aaa;
+  opacity: 1; /* Firefox */
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #aaa;
+}
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #aaa;
+}
+
+/* Form Options (Remember me / Forgot Password) */
+.form-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 0.9em;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 8px;
+    accent-color: #1abc9c; /* Style checkbox color */
+}
+
+.remember-me label {
+    margin-bottom: 0; /* Override default label margin */
+    font-weight: 400;
+    color: #555;
+}
+
+.forgot-password-link {
+    color: #1abc9c; /* Teal link */
+    text-decoration: none;
+}
+
+.forgot-password-link:hover {
+    text-decoration: underline;
+}
+
+/* Error and Success Messages */
+.error-message,
+#auth-error-message {
+    color: #dc3545; /* Red for errors */
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    text-align: center;
+    display: none; /* Hide by default, show with JS */
+}
+
+.success-message,
+#auth-success-message {
+    color: #155724; /* Green for success */
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    text-align: center;
+    display: none; /* Hide by default, show with JS */
+}
+
+/* Validation Error Styling (if using simple client-side validation) */
+.validation-error {
+    color: #dc3545;
+    font-size: 0.8em;
+    margin-top: 5px;
+    display: none; /* Hide by default */
+}
+/* Removed empty ruleset to fix the issue */
+
+/* =============================
+   Buttons
+   ============================= */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    font-weight: 500;
+}
+
+.btn-primary {
+    color: #fff;
+    /* Teal to Orange Gradient */
+    background: linear-gradient(to right, #1abc9c, #f39c12); /* Adjust colors slightly if needed */
+    background-size: 100%; /* Ensure gradient covers button */
+}
+
+.btn-primary:hover {
+    opacity: 0.9; /* Slight fade on hover */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    padding: 12px 15px; /* Slightly larger padding for main action button */
+    font-size: 1.1em;
+    margin-bottom: 20px; /* Space below login button */
+}
+
+/* Button Loader (Simple Spinner Example) */
+.button-loader {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top: 2px solid #fff;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    display: inline-block; /* Or 'block' if needed */
+    vertical-align: middle; /* Align with text */
+    margin-left: 8px; /* Space from text */
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* =============================
+   Divider and Social Login
+   ============================= */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 25px 0;
+    color: #888;
+    font-size: 0.9em;
+    text-transform: uppercase;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex-grow: 1;
+    border-bottom: 1px solid #ddd; /* Light grey line */
+}
+
+.divider::before {
+    margin-right: 15px; /* Space before OR */
+}
+
+.divider::after {
+    margin-left: 15px; /* Space after OR */
+}
+
+.social-login-buttons {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 15px; /* Space between social buttons */
+    margin-bottom: 25px;
+}
+
+.btn-social {
+    display: flex; /* Use flex to align icon and text */
+    align-items: center;
+    justify-content: center; /* Center content within button */
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1em;
+    border: 1px solid #ddd; /* Light border */
+    background-color: #f8f9fa; /* Light grey background */
+    color: #333; /* Dark text */
+}
+
+.btn-social:hover {
+    background-color: #e9ecef; /* Slightly darker on hover */
+    border-color: #ccc;
+}
+
+.btn-social i {
+    margin-right: 10px; /* Space between icon and text */
+    font-size: 1.2em; /* Slightly larger icon */
+}
+
+/* Optional: Specific icon colors if desired */
+/* .btn-google i { color: #DB4437; } */
+/* .btn-github i { color: #333; } */
+
+/* =============================
+   Switch Auth Link (Sign Up)
+   ============================= */
+.switch-auth {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+.switch-auth a {
+    color: #1abc9c; /* Teal link */
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.switch-auth a:hover {
+    text-decoration: underline;
+}
+
+/* =============================
+   Footer Styles (Auth Pages)
+   ============================= */
+#footer.auth-footer {
+    background-color: #343a40; /* Dark footer background */
+    color: #f8f9fa; /* Light text color */
+    padding: 25px 0 10px 0; /* Padding top/bottom */
+    margin-top: auto; /* Pushes footer to bottom if content is short */
+}
+
+.footer-container-simple {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 15px; /* Space between logo and links */
+    margin-bottom: 15px; /* Space before bottom text */
+}
+
+.auth-footer .logo {
+    color: #fff; /* White logo on dark background */
+    font-weight: 600;
+    font-size: 1.6em;
+    text-decoration: none;
+}
+
+.footer-links-simple a {
+    color: #adb5bd; /* Lighter grey for links */
+    text-decoration: none;
+    margin-left: 20px; /* Space between links */
+    font-size: 0.9em;
+    transition: color 0.3s ease;
+}
+
+.footer-links-simple a:hover {
+    color: #fff; /* White on hover */
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 15px;
+    border-top: 1px solid #495057; /* Subtle separator line */
+    font-size: 0.85em;
+    color: #adb5bd;
+}
+
+/* =============================
+   Responsive Adjustments (Optional)
+   ============================= */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 20px;
+    }
+
+    .auth-container h2 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        width: 95%;
+    }
+
+    .auth-container {
+        max-width: 100%; /* Use more screen width */
+        padding: 15px;
+    }
+
+    .form-options {
+        flex-direction: column; /* Stack remember me and forgot password */
+        align-items: flex-start; /* Align items left */
+        gap: 10px; /* Add space between stacked items */
+    }
+
+    .forgot-password-link {
+       align-self: flex-start; /* Ensure it stays left aligned */
+    }
+
+    .footer-container-simple {
+        flex-direction: column; /* Stack logo and links */
+        align-items: center; /* Center items */
+        text-align: center;
+    }
+
+    .footer-links-simple a {
+        margin-left: 10px; /* Reduce margin */
+        margin-right: 10px; /* Add right margin for spacing */
+        display: inline-block; /* Ensure spacing works */
+        margin-top: 5px;
+    }
+
+     .auth-footer .logo {
+        margin-bottom: 10px;
+    }
+}

@@ -1,0 +1,545 @@
+/* --- Base, Variables, Header, Footer, Buttons, Forms --- */
+/* Reuse styles from the previous example (Title/Desc Generator) */
+/* Ensure variables (--gem-teal, --gem-orange, fonts) are correct */
+/* Include necessary resets and base styles */
+
+:root {
+    /* GemContent Color Palette - REPLACE WITH ACTUAL VALUES */
+    --gem-teal: #1abc9c;
+    --gem-orange: #f39c12;
+    --gem-dark: #2c3e50;
+    --gem-light-gray: #ecf0f1;
+    --gem-medium-gray: #bdc3c7;
+    --gem-text-color: #34495e;
+    --gem-white: #ffffff;
+    --gem-success: #2ecc71;
+    --gem-error: #e74c3c;
+    --gem-info: #3498db; /* For informational intent */
+    --gem-action: #9b59b6; /* For transactional intent */
+    --gem-nav: #f1c40f;   /* For navigational intent */
+    --gem-compare: #e67e22; /* For commercial intent */
+
+
+    /* GemContent Fonts - REPLACE WITH ACTUAL FONT NAMES */
+    --gem-font-primary: 'Arial', sans-serif;
+    --gem-font-secondary: 'Helvetica Neue', sans-serif;
+
+    --container-width: 1140px;
+    --container-padding: 15px;
+    --border-radius: 6px;
+    --transition-speed: 0.3s ease;
+}
+
+/* Basic Reset & Body */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--gem-font-primary);
+    color: var(--gem-text-color);
+    background-color: var(--gem-white);
+    line-height: 1.6;
+    font-size: 16px;
+    /* Add position:relative if needed for absolute positioning inside */
+}
+
+/* Container */
+.container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 var(--container-padding); }
+
+/* Headings & Links */
+h1, h2, h3, h4, h5, h6 { font-family: var(--gem-font-secondary); color: var(--gem-dark); margin-bottom: 0.75em; line-height: 1.3; }
+h1 { font-size: 2.2rem; } h2 { font-size: 1.8rem; } h3 { font-size: 1.5rem; }
+a { color: var(--gem-teal); text-decoration: none; transition: color var(--transition-speed); }
+a:hover { color: var(--gem-orange); }
+ul { list-style: none; }
+
+/* --- Header (Reuse from previous example) --- */
+.gem-header { background-color: var(--gem-white); padding: 15px 0; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo img { display: block; }
+.main-nav ul { display: flex; gap: 25px; }
+.main-nav a { color: var(--gem-text-color); font-weight: 500; padding: 5px 0; position: relative; }
+.main-nav a::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 0; height: 2px; background-color: var(--gem-teal); transition: width var(--transition-speed); }
+.main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+.header-actions { display: flex; align-items: center; gap: 10px; }
+.mobile-menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 5px; }
+.mobile-menu-toggle span { display: block; width: 25px; height: 3px; background-color: var(--gem-dark); margin: 5px 0; transition: transform 0.3s ease, opacity 0.3s ease; }
+.logo { color: #1abc9c; font-weight: 600; font-size: 1.8em; text-decoration: none; }
+
+
+/* --- Buttons (Reuse/Adapt from previous example) --- */
+.gem-button { display: inline-flex; /* Use flex for icon alignment */ align-items: center; justify-content: center; gap: 8px; padding: 10px 20px; border: none; border-radius: var(--border-radius); font-family: var(--gem-font-secondary); font-size: 1rem; font-weight: 600; cursor: pointer; text-align: center; transition: background-color var(--transition-speed), color var(--transition-speed), box-shadow var(--transition-speed); line-height: 1.4; min-height: 44px; }
+.gem-button i { line-height: 1; /* Prevent icon misalignment */ }
+.gem-button-primary { background-color: var(--gem-teal); color: var(--gem-white); }
+.gem-button-primary:hover { background-color: darken(var(--gem-teal), 10%); box-shadow: 0 4px 8px rgba(26, 188, 156, 0.2); }
+.gem-button-secondary { background-color: var(--gem-light-gray); color: var(--gem-dark); border: 1px solid var(--gem-medium-gray); }
+.gem-button-secondary:hover { background-color: darken(var(--gem-light-gray), 5%); }
+.gem-button-text { background: none; color: var(--gem-teal); padding: 5px; font-weight: normal; min-height: auto; }
+.gem-button-text:hover { color: var(--gem-orange); text-decoration: underline; }
+.gem-button-large { padding: 15px 30px; font-size: 1.1rem; }
+.gem-button:disabled { background-color: var(--gem-medium-gray); color: #999; cursor: not-allowed; box-shadow: none; border-color: var(--gem-medium-gray); }
+
+/* --- Form Elements (Reuse/Adapt from previous example) --- */
+.tool-container { padding-top: 40px; padding-bottom: 60px; }
+.intro { text-align: center; margin-bottom: 40px; }
+.intro h1 { color: var(--gem-teal); }
+.generator-form-section { background-color: var(--gem-light-gray); padding: 30px; border-radius: var(--border-radius); margin-bottom: 40px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+.generator-form-section h2 { text-align: center; margin-bottom: 30px; color: var(--gem-dark); }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--gem-dark); font-size: 0.95rem; }
+.gem-input, .gem-select { width: 100%; padding: 12px 15px; border: 1px solid var(--gem-medium-gray); border-radius: var(--border-radius); font-size: 1rem; font-family: var(--gem-font-primary); transition: border-color var(--transition-speed), box-shadow var(--transition-speed); background-color: var(--gem-white); min-height: 44px; appearance: none; /* Remove default styling */ }
+.gem-input:focus, .gem-select:focus { border-color: var(--gem-teal); box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.2); outline: none; }
+.gem-select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%2334495e'%3E%3Cpath fill-rule='evenodd' d='M8 11.5a.5.5 0 0 1-.354-.146l-4-4a.5.5 0 0 1 .708-.708L8 10.293l3.646-3.647a.5.5 0 0 1 .708.708l-4 4A.5.5 0 0 1 8 11.5z'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 15px center; background-size: 16px 12px; padding-right: 40px; /* Make space for arrow */ }
+.required { color: var(--gem-orange); margin-left: 4px; }
+#add-url-btn { margin-top: 10px; }
+.input-wrapper { margin-bottom: 10px; } .input-wrapper:last-child { margin-bottom: 0; }
+.form-row { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; }
+.form-row .form-group { flex: 1; min-width: 150px; margin-bottom: 0; }
+#generate-btn { width: 100%; margin-top: 10px; }
+
+
+/* --- Results Section --- */
+.results-section { margin-bottom: 40px; min-height: 150px; position: relative; }
+.loading-indicator { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; text-align: center; position: absolute; inset: 0; background: rgba(255, 255, 255, 0.85); z-index: 10; }
+.loading-indicator p { margin-top: 15px; font-weight: 600; color: var(--gem-dark); }
+.loader { border: 5px solid var(--gem-light-gray); border-top: 5px solid var(--gem-teal); border-radius: 50%; width: 50px; height: 50px; animation: spin 1s linear infinite; }
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+.error-message { background-color: rgba(231, 76, 60, 0.1); color: var(--gem-error); border: 1px solid var(--gem-error); padding: 15px; border-radius: var(--border-radius); text-align: center; }
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    flex-wrap: wrap; /* Wrap on small screens */
+    gap: 10px;
+}
+.results-header h2 {
+    margin-bottom: 0;
+    color: var(--gem-teal);
+}
+
+.usage-indicator {
+    font-size: 0.85rem;
+    color: var(--gem-text-color);
+    background-color: var(--gem-light-gray);
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--gem-medium-gray);
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.usage-indicator i { color: var(--gem-orange); }
+
+/* Category Selector (Tabs/Swipeable) */
+.category-selector {
+    margin-bottom: 25px;
+    overflow: hidden; /* Needed for wrapper */
+}
+.category-tabs-wrapper {
+    display: flex;
+    gap: 5px;
+    padding-bottom: 5px; /* Space for potential scrollbar */
+    /* Mobile swipe */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch; /* Momentum scrolling */
+    /* Hide scrollbar visually */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+.category-tabs-wrapper::-webkit-scrollbar { display: none; /* Chrome/Safari/Opera */ }
+
+.category-tab {
+    padding: 10px 20px;
+    border: 1px solid var(--gem-medium-gray);
+    background-color: var(--gem-white);
+    color: var(--gem-text-color);
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition-speed);
+    font-weight: 500;
+    font-size: 0.95rem;
+    min-height: 44px;
+    flex-shrink: 0; /* Prevent tabs shrinking on mobile */
+}
+.category-tab:hover {
+    background-color: var(--gem-light-gray);
+    border-color: var(--gem-dark);
+}
+.category-tab.active {
+    background-color: var(--gem-teal);
+    color: var(--gem-white);
+    border-color: var(--gem-teal);
+    font-weight: 600;
+}
+
+/* Actions Bar */
+.results-actions-bar {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--gem-light-gray);
+}
+.batch-select-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+}
+.batch-select-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--gem-teal); /* Style checkbox color */
+    cursor: pointer;
+}
+.results-actions-bar .gem-button {
+    padding: 8px 15px; /* Smaller buttons for actions */
+    font-size: 0.9rem;
+    min-height: 38px;
+}
+
+/* Export Dropdown */
+.export-options {
+    position: relative;
+}
+.export-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--gem-white);
+    border: 1px solid var(--gem-medium-gray);
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 20;
+    min-width: 150px;
+    margin-top: 5px;
+    overflow: hidden; /* Ensures children respect border radius */
+}
+.export-options:hover .export-dropdown,
+.export-options .gem-button:focus + .export-dropdown, /* Show on focus */
+.export-dropdown:hover { /* Keep open while hovering dropdown */
+    display: block;
+}
+.export-dropdown button {
+    display: block;
+    width: 100%;
+    padding: 10px 15px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--gem-text-color);
+}
+.export-dropdown button:hover {
+    background-color: var(--gem-light-gray);
+}
+.export-dropdown button:disabled {
+    color: var(--gem-medium-gray);
+    cursor: not-allowed;
+    background-color: transparent;
+}
+
+/* Keyword Results Area */
+/* Removed empty ruleset as it was not used */
+
+/* Keyword Card */
+.keyword-card {
+    background-color: var(--gem-white);
+    border: 1px solid var(--gem-light-gray);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    transition: box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.keyword-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.card-main {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align checkbox/copy button to top */
+    gap: 10px;
+}
+.card-select-keyword {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-grow: 1; /* Allow keyword to take space */
+}
+.card-select-keyword input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0; /* Prevent checkbox shrinking */
+    accent-color: var(--gem-teal);
+    cursor: pointer;
+    margin-top: 2px; /* Align better with text */
+}
+.keyword-text {
+    font-weight: 600;
+    color: var(--gem-dark);
+    font-size: 1.05rem;
+    word-break: break-word; /* Prevent overflow */
+}
+.card-actions button {
+    background: none;
+    border: none;
+    color: var(--gem-medium-gray);
+    cursor: pointer;
+    padding: 5px; /* Ensure touch target */
+    font-size: 1rem;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 1;
+    transition: color var(--transition-speed);
+}
+.card-actions button:hover {
+    color: var(--gem-teal);
+}
+.card-actions button.copied {
+    color: var(--gem-success);
+}
+
+
+.card-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: var(--gem-text-color);
+    padding-left: 28px; /* Indent details under keyword */
+}
+.detail-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: var(--gem-light-gray);
+    padding: 3px 8px;
+    border-radius: 12px; /* Pill shape */
+    border: 1px solid var(--gem-medium-gray);
+}
+.detail-item i { /* Icon styling */
+    font-size: 0.8em;
+}
+/* Color coding based on intent/type */
+.detail-item[data-intent="informational"] { border-color: var(--gem-info); color: var(--gem-info); background-color: rgba(52, 152, 219, 0.1);}
+.detail-item[data-intent="transactional"] { border-color: var(--gem-action); color: var(--gem-action); background-color: rgba(155, 89, 182, 0.1);}
+.detail-item[data-intent="navigational"] { border-color: var(--gem-nav); color: var(--gem-nav); background-color: rgba(241, 196, 15, 0.1);}
+.detail-item[data-intent="commercial"] { border-color: var(--gem-compare); color: var(--gem-compare); background-color: rgba(230, 126, 34, 0.1);}
+
+.detail-item strong { font-weight: 600; }
+
+/* Collapsible Sections (If needed, using details/summary) */
+details {
+    border: 1px solid var(--gem-light-gray);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    overflow: hidden; /* Contain content */
+}
+summary {
+    padding: 10px 15px;
+    background-color: var(--gem-light-gray);
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none; /* Remove default marker */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+summary::-webkit-details-marker { display: none; } /* Hide default arrow */
+summary::after { /* Custom arrow */
+    content: '\f078'; /* Font Awesome down arrow */
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    transition: transform var(--transition-speed);
+}
+details[open] summary::after {
+    transform: rotate(180deg);
+}
+.details-content {
+    padding: 15px;
+}
+
+
+/* --- Mobile Specific UI: Bottom Sheet & FAB --- */
+
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1100;
+    transform: translateY(100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+}
+.bottom-sheet.active {
+    transform: translateY(0);
+    visibility: visible;
+}
+
+.sheet-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1; /* Behind sheet content */
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.bottom-sheet.active .sheet-overlay {
+    opacity: 1;
+}
+
+.sheet-content {
+    background-color: var(--gem-white);
+    padding: 20px;
+    padding-top: 40px; /* Space for close button */
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    max-height: 80vh; /* Limit height */
+    overflow-y: auto;
+    position: relative; /* For close button */
+}
+.sheet-content h3 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+.close-sheet-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--gem-medium-gray);
+    cursor: pointer;
+    padding: 5px;
+    line-height: 1;
+}
+.close-sheet-btn:hover {
+    color: var(--gem-dark);
+}
+
+/* Filter specific styles inside sheet */
+.sheet-content .form-group { margin-bottom: 15px; }
+.sheet-content input[type="range"] { width: calc(100% - 40px); vertical-align: middle; }
+.sheet-content .range-value { display: inline-block; width: 30px; text-align: right; font-weight: bold; }
+.checkbox-group label { display: block; margin-bottom: 8px; }
+.checkbox-group input[type="checkbox"] { margin-right: 8px; accent-color: var(--gem-teal); }
+#apply-filters-btn { width: 100%; margin-top: 20px; }
+
+/* Floating Action Button (FAB) */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 56px;
+    height: 56px;
+    background-color: var(--gem-orange);
+    color: var(--gem-white);
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1050;
+    transition: transform 0.2s ease-out, background-color var(--transition-speed);
+    display: none; /* Hidden by default, shown via JS/media query */
+}
+.fab:hover {
+    background-color: darken(var(--gem-orange), 10%);
+    transform: scale(1.05);
+}
+
+
+/* --- Footer (Reuse from previous example) --- */
+.gem-footer { background-color: var(--gem-dark); color: var(--gem-light-gray); padding: 20px 0; text-align: center; font-size: 0.9rem; margin-top: 40px; }
+.gem-footer p { margin: 0; }
+
+/* --- Responsive Adjustments --- */
+
+/* Tablet */
+@media (max-width: 992px) {
+    .main-nav { display: none; }
+    .mobile-menu-toggle { display: block; }
+    .header-actions .gem-button { display: none; /* Hide some buttons or move to menu */ }
+    .header-actions .gem-button-secondary { display: inline-block; } /* Keep login? */
+
+    .fab { display: flex; } /* Show FAB on tablet and smaller */
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    .generator-form-section { padding: 20px; }
+    .form-row { flex-direction: column; gap: 15px; }
+    .form-row .form-group { min-width: 0; }
+
+    .results-header { flex-direction: column; align-items: flex-start; }
+    .usage-indicator { align-self: flex-end; }
+
+    .results-actions-bar { gap: 10px; }
+    .results-actions-bar .gem-button { font-size: 0.85rem; padding: 6px 12px; min-height: 36px; }
+    .export-options { margin-left: auto; /* Push export to the right if space allows */ }
+
+    .keyword-card { padding: 12px; }
+    .keyword-text { font-size: 1rem; }
+    .card-details { padding-left: 0; margin-left: 28px; /* Keep indent relative to checkbox */ } /* Indent details under keyword */
+    .detail-item { font-size: 0.8rem; padding: 2px 6px; gap: 3px;}
+
+    .fab { bottom: 15px; right: 15px; width: 50px; height: 50px; font-size: 1.3rem; }
+
+    .sheet-content { max-height: 90vh; } /* Allow slightly more height on mobile */
+}
+
+/* Small Mobile */
+@media (max-width: 576px) {
+    .container { padding: 0 10px; }
+    .gem-header { padding: 10px 0; }
+    .logo img { height: 30px; }
+    .intro h1 { font-size: 1.6rem; }
+    .intro p { font-size: 0.95rem; }
+    .gem-button { padding: 8px 15px; font-size: 0.95rem; min-height: 40px; gap: 5px; }
+    .gem-button-large { padding: 12px 20px; font-size: 1rem; }
+    .gem-input, .gem-select { padding: 10px 12px; font-size: 0.95rem; min-height: 40px; }
+    .gem-select { background-position: right 10px center; padding-right: 35px; }
+
+    .category-tab { padding: 8px 15px; font-size: 0.9rem; min-height: 40px;}
+
+    .results-actions-bar { flex-direction: column; align-items: stretch; }
+    .results-actions-bar > * { width: 100%; text-align: center; } /* Stack action buttons */
+    .results-actions-bar .gem-button { justify-content: center; }
+    .export-options { margin-left: 0; }
+    .export-dropdown { 
+        margin-top: 10px; /* Example adjustment */
+    }
+    .batch-select-label { justify-content: center; padding: 5px 0; }
+
+    .keyword-card .card-main { flex-wrap: wrap; } /* Allow copy btn to wrap below */
+    .card-actions { margin-left: auto; } /* Push copy button to right */
+}
+
+/* Mobile Nav Styling (from previous example) */
+.main-nav.active { display: block; position: absolute; top: 100%; left: 0; right: 0; background-color: var(--gem-white); box-shadow: 0 5px 10px rgba(0,0,0,0.1); padding: 15px; }
+.main-nav.active ul { flex-direction: column; gap: 15px; } .main-nav.active li { text-align: center; }
+.mobile-menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.mobile-menu-toggle.active span:nth-child(2) { opacity: 0; }
+.mobile-menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }

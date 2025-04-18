@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GemContent - FAQ & Q&A Generator</title>
+
+    <!-- ****** VERIFY THIS PATH ****** -->
+    <!-- Is your CSS file inside a folder named 'src'? -->
+    <!-- If not, change 'src/' to the correct path or remove it if the file is in the same directory -->
+    <link rel="stylesheet" href="css/faq_script.css">
+    <!-- ******************************** -->
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Favicon (replace with your actual favicon) -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+
+    <!-- Drag & Drop Library (Example: SortableJS) - Load only if implemented -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.0/Sortable.min.js" defer></script> -->
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container header-container">
+            <a href="home.html" class="logo"> <!-- Link logo to home -->
+                <!-- Optional: <img src="path/to/your/logo.png" alt="GemContent Logo"> -->
+                <span>GemContent</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="faq_script.html" class="active">FAQ Generator</a></li>
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="login.html">Login</a></li>
+                    <!-- Apply standard button classes -->
+                    <li><a href="signup.html" class="btn btn-primary">Sign Up</a></li>
+                </ul>
+            </nav>
+            <!-- Use Font Awesome icon -->
+            <button class="mobile-menu-toggle" aria-label="Toggle Menu"><i class="fas fa-bars"></i></button>
+        </div>
+        <!-- Add mobile nav structure here if needed -->
+    </header>
+
+    <main class="container">
+        <section id="introduction" class="tool-intro">
+            <h1>AI-Powered FAQ & Q&A Generator</h1>
+            <p>Instantly create comprehensive, accurate, and SEO-friendly FAQs for your products, services, or topics using the power of Gemini AI.</p>
+        </section>
+
+        <section id="faq-generator-tool">
+            <!-- Apply .card class to the form container -->
+            <form id="faqForm" class="faq-form card">
+                <h2>Generation Settings</h2>
+
+                <div class="form-grid">
+                    <div class="control-group form-span-2">
+                        <label for="topic">Product/Service/Topic:</label>
+                        <input type="text" id="topic" name="topic" placeholder="e.g., 'Cloud Storage Solutions', 'Handmade Pottery Guide'" required>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="industry">Industry/Niche:</label>
+                        <select id="industry" name="industry">
+                            <option value="">Select Industry (Optional)</option>
+                            <option value="technology">Technology</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="finance">Finance</option>
+                            <option value="healthcare">Healthcare</option>
+                            <option value="education">Education</option>
+                            <option value="travel">Travel</option>
+                            <option value="food">Food & Beverage</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="audience">Target Audience:</label>
+                        <select id="audience" name="audience">
+                            <option value="general">General Public</option>
+                            <option value="beginners">Beginners</option>
+                            <option value="experts">Experts / Technical Users</option>
+                            <option value="businesses">Businesses (B2B)</option>
+                            <option value="consumers">Consumers (B2C)</option>
+                            <option value="developers">Developers</option>
+                        </select>
+                    </div>
+
+                     <div class="control-group form-span-2">
+                         <label>Existing Questions (Optional):</label>
+                         <div id="existingQuestionsContainer">
+                             <textarea name="existingQuestions[]" placeholder="Add any specific questions you want included or answered..." aria-label="Existing Question 1"></textarea>
+                         </div>
+                         <!-- Kept as text-button, matches CSS -->
+                         <button type="button" id="addQuestionBtn" class="text-button"><i class="fas fa-plus"></i> Add Another Question</button>
+                     </div>
+
+                     <div class="control-group">
+                         <label>Question Types Focus:</label>
+                         <div class="checkbox-group">
+                             <label><input type="checkbox" name="questionTypes" value="how-to"> How-to / Instructions</label>
+                             <label><input type="checkbox" name="questionTypes" value="pricing"> Pricing / Costs</label>
+                             <label><input type="checkbox" name="questionTypes" value="technical"> Technical / Specs</label>
+                             <label><input type="checkbox" name="questionTypes" value="comparison"> Comparison / Alternatives</label>
+                             <label><input type="checkbox" name="questionTypes" value="troubleshooting"> Troubleshooting</label>
+                             <label><input type="checkbox" name="questionTypes" value="benefits"> Benefits / Features</label>
+                             <label><input type="checkbox" name="questionTypes" value="general"> General / Overview</label>
+                         </div>
+                     </div>
+
+                    <div class="control-group">
+                        <label for="numQuestions">Number of Q&As:</label>
+                        <input type="number" id="numQuestions" name="numQuestions" value="10" min="3" max="50">
+                    </div>
+
+                     <div class="control-group">
+                        <label for="tone">Tone:</label>
+                        <select id="tone" name="tone">
+                            <option value="helpful">Helpful & Friendly</option>
+                            <option value="authoritative">Authoritative & Formal</option>
+                            <option value="conversational">Conversational & Casual</option>
+                            <option value="professional">Professional & Direct</option>
+                            <option value="technical">Technical & Precise</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="detailLevel">Detail Level: <span class="range-value" id="detailLevelValue">Medium</span></label> <!-- Moved span into label -->
+                        <input type="range" id="detailLevel" name="detailLevel" min="1" max="5" value="3">
+                    </div>
+
+                    <div class="control-group toggle-group">
+                         <label for="simpleLanguage">Use Simpler Language:</label>
+                         <label class="switch" aria-label="Toggle Simpler Language">
+                             <input type="checkbox" id="simpleLanguage">
+                             <span class="slider round"></span>
+                         </label>
+                    </div>
+
+                     <div class="control-group form-span-2">
+                         <label for="keywords">Keywords for SEO (Optional):</label>
+                         <input type="text" id="keywords" name="keywords" placeholder="e.g., secure cloud backup, pottery tools (comma-separated)">
+                     </div>
+
+                </div> <!-- End form-grid -->
+
+                <!-- Apply standard button classes -->
+                <button type="submit" id="generateBtn" class="btn btn-primary main-action">
+                    <span class="btn-text">Generate FAQs</span>
+                    <span class="loader" style="display: none;"></span>
+                </button>
+            </form> <!-- End faqForm -->
+
+            <!-- Output Area -->
+            <section id="outputArea" class="output-section" style="display: none;">
+                <h2>Generated FAQs & Q&As</h2>
+
+                <!-- Loading State -->
+                <div id="outputLoading" class="loading-container card" style="display: none;">
+                     <div class="spinner" role="status" aria-live="polite"><span class="visually-hidden">Loading...</span></div>
+                     <p>Gemini AI is generating your FAQs...</p>
+                 </div>
+
+                 <!-- Error State -->
+                <div id="outputError" class="error-message" role="alert" style="display: none;">
+                    <p id="errorMessageDetail">An error occurred.</p>
+                </div>
+
+                 <!-- Results Container -->
+                <div id="outputResults" style="display: none;">
+                    <!-- Apply .card style to actions container -->
+                    <div class="output-actions card">
+                        <h3>Results</h3>
+                        <div>
+                            <!-- Use icon buttons -->
+                            <button id="copyAllBtn" class="icon-button" title="Copy All Q&As (Text)" aria-label="Copy All Q&As Text"><i class="fas fa-copy"></i></button>
+                            <select id="exportOptions" onchange="handleExport(this.value)" aria-label="Export Options">
+                                <option value="">Export As...</option>
+                                <option value="txt">Text (.txt)</option>
+                                <option value="html">HTML (w/ Schema)</option>
+                                <option value="pdf" disabled>PDF [Lib Needed]</option>
+                                <option value="docx" disabled>Word (.docx) [Lib Needed]</option>
+                            </select>
+                            <!-- Add other premium/history icon buttons here if needed -->
+                            <!-- <button class="icon-button" title="Save..."><i class="fas fa-save"></i></button> -->
+                            <!-- <button class="icon-button" title="History..."><i class="fas fa-history"></i></button> -->
+                        </div>
+                    </div>
+
+                    <!-- FAQ List (Accordion) - Apply .card style -->
+                    <div id="faqList" class="faq-list card" aria-live="polite">
+                        <!-- FAQ items will be injected here by JS -->
+                        <!-- Example Structure JS should create:
+                        <div class="faq-item">
+                            <div class="faq-item-header">
+                                <h4>Generated Question?</h4>
+                                <span class="category-tag">Category</span>
+                                <span class="accordion-icon"></span>
+                            </div>
+                            <div class="faq-item-content">
+                                <div class="content-inner">
+                                    <p>Generated Answer.</p>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-secondary btn-small"><i class="fas fa-edit"></i> Edit</button>
+                                        <button class="btn btn-secondary btn-small"><i class="fas fa-trash"></i> Delete</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                         -->
+                        <p>Generated FAQs will appear here.</p>
+                    </div>
+
+                    <!-- Schema Markup - Apply .card style -->
+                    <div class="schema-output card">
+                        <h4>Generated Schema Markup (JSON-LD)</h4>
+                         <!-- Use icon button -->
+                        <button id="copySchemaBtn" class="icon-button copy-schema-btn" title="Copy Schema Markup" aria-label="Copy Schema Markup"><i class="fas fa-copy"></i></button>
+                        <pre><code id="schemaCode">Schema markup will appear here...</code></pre>
+                    </div>
+
+                     <!-- Implementation Suggestions - Apply .card style -->
+                    <div class="implementation-suggestions card">
+                        <h4>Implementation Suggestions</h4>
+                        <ul id="suggestionsList">
+                            <li><i class="fas fa-lightbulb"></i> Embed these FAQs directly onto relevant product/service pages.</li>
+                            <li><i class="fas fa-lightbulb"></i> Create a dedicated FAQ page linked from your main navigation or footer.</li>
+                            <li><i class="fas fa-lightbulb"></i> Use the generated schema markup to improve search engine visibility.</li>
+                        </ul>
+                    </div>
+
+                </div> <!-- End outputResults -->
+            </section> <!-- End outputArea -->
+        </section> <!-- End faq-generator-tool -->
+    </main>
+
+    <!-- Mobile Bottom Navigation -->
+    <nav class="mobile-bottom-nav">
+         <!-- Use Icon Buttons -->
+         <button id="mobileGenerateBtn" aria-label="Generate FAQs">
+             <i class="fas fa-magic fa-fw"></i> <!-- Magic Wand -->
+             <span>Generate</span>
+         </button>
+         <button id="mobileCopyBtn" aria-label="Copy All FAQs">
+             <i class="fas fa-copy fa-fw"></i> <!-- Copy -->
+             <span>Copy All</span>
+         </button>
+          <button id="mobileScrollTopBtn" aria-label="Scroll to Top">
+              <i class="fas fa-arrow-up fa-fw"></i> <!-- Arrow Up -->
+              <span>Top</span>
+          </button>
+          <!-- Add other relevant mobile actions if needed -->
+    </nav>
+
+    <footer class="main-footer">
+        <div class="container">
+            <p>© 2023 GemContent. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+
+    <!-- JS Libraries (Load only if needed/implemented) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script> -->
+    <!-- <script src="https://unpkg.com/docx@7.3.0/build/index.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script> -->
+    <!-- Font Awesome JS (Optional but can help with SVG rendering) -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js" integrity="sha512-..." crossorigin="anonymous"></script> -->
+
+    <!-- Your Custom JavaScript -->
+    <script src="js/faq_script.js"></script>
+</body>
+</html>

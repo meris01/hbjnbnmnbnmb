@@ -1,0 +1,606 @@
+/* --- Base Styles & Variables --- */
+:root {
+    --teal: #20B2AA; /* LightSeaGreen */
+    --orange: #FF8C42; /* Coral */
+    --dark-text: #333;
+    --light-text: #f8f9fa;
+    --grey-text: #6c757d;
+    --bg-color: #ffffff;
+    --border-color: #e0e0e0;
+    --gradient: linear-gradient(135deg, var(--teal), var(--orange));
+    --gradient-hover: linear-gradient(135deg, #1aa8a1, #ff7a2e); /* Slightly darker gradient for hover */
+    --font-primary: 'Poppins', sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px; /* Base font size */
+}
+
+body {
+    font-family: var(--font-primary);
+    color: var(--dark-text);
+    background-color: var(--bg-color);
+    line-height: 1.7;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a {
+    color: var(--teal);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--orange);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    margin-bottom: 0.75em;
+    line-height: 1.3;
+    color: var(--dark-text);
+}
+
+h1 { font-size: 2.8rem; margin-top: 1em; margin-bottom: 0.5em; text-align: center; background: var(--gradient); -webkit-background-clip: text; background-clip: text; color: transparent; }
+h2 { font-size: 1.8rem; color: var(--teal); border-bottom: 2px solid var(--border-color); padding-bottom: 0.3em; }
+h3 { font-size: 1.3rem; color: var(--orange); margin-top: 1.5em; }
+
+p {
+    margin-bottom: 1.2em;
+    color: var(--grey-text);
+}
+
+ul, ol {
+    margin-bottom: 1.2em;
+    padding-left: 25px;
+}
+
+li {
+    margin-bottom: 0.5em;
+    color: var(--grey-text);
+}
+
+strong {
+    font-weight: 600;
+    color: var(--dark-text);
+}
+
+hr.section-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 2.5rem 0;
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    font-size: 0.95rem;
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: var(--light-text);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary:hover {
+    background: var(--gradient-hover);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+    color: var(--light-text); /* Ensure text color remains on hover */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--teal);
+    border: 2px solid var(--teal);
+}
+
+.btn-secondary:hover {
+    background-color: var(--teal);
+    color: var(--light-text);
+    border-color: var(--teal);
+}
+
+
+/* --- Header --- */
+.site-header {
+    background-color: #fff;
+    padding: 15px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 3px solid transparent; /* Space for gradient border */
+    border-image: var(--gradient) 1;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.logo img {
+    height: 40px; /* Adjust as needed */
+    margin-right: 10px;
+    vertical-align: middle; /* Align image better with text */
+}
+
+.logo span {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav a {
+    color: var(--dark-text);
+    font-weight: 600;
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+.main-nav a:hover::after {
+    width: 100%;
+}
+
+.main-nav a:hover {
+    color: var(--dark-text); /* Keep text color consistent on hover */
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+.mobile-nav-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--teal);
+}
+
+.mobile-nav {
+    display: none; /* Hidden by default */
+    background-color: #fff;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    position: absolute;
+    top: 78px; /* Height of header + border */
+    left: 0;
+    right: 0;
+    z-index: 999;
+}
+
+.mobile-nav ul {
+    list-style: none;
+    padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.mobile-nav a {
+    color: var(--dark-text);
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 10px 0;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.mobile-nav a:hover {
+    color: var(--orange);
+}
+
+/* --- Privacy Policy Page Specific Styles --- */
+.privacy-policy-page {
+    padding: 40px 0 60px; /* Top padding adjusted for sticky header */
+}
+
+.content-container {
+    max-width: 850px; /* Narrower width for readability */
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+    margin-top: 30px; /* Space below header */
+}
+
+.last-updated {
+    text-align: center;
+    color: var(--grey-text);
+    font-style: italic;
+    margin-bottom: 2em;
+    font-size: 0.9rem;
+}
+
+/* Table of Contents */
+.toc {
+    background-color: #f8f9fa;
+    padding: 20px 30px;
+    border-radius: 6px;
+    margin-bottom: 40px;
+    border-left: 4px solid var(--teal);
+}
+
+.toc h2 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: none; /* Remove default border */
+    color: var(--dark-text);
+}
+
+.toc ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    columns: 2; /* Create two columns on wider screens */
+    column-gap: 40px;
+}
+
+.toc li {
+    margin-bottom: 10px;
+}
+
+.toc a {
+    font-weight: 600;
+    color: var(--teal);
+    transition: color 0.2s ease, padding-left 0.2s ease;
+    display: block;
+}
+
+.toc a:hover {
+    color: var(--orange);
+    padding-left: 5px;
+}
+
+
+/* Policy Sections */
+.policy-section {
+    margin-bottom: 20px;
+    position: relative; /* For absolute positioning of toggle button if needed */
+}
+
+.policy-section h2.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: default; /* Default cursor for desktop */
+}
+
+.toggle-section {
+    display: none; /* Hide toggle button on desktop */
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var(--grey-text);
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-section i {
+    transition: transform 0.3s ease;
+}
+
+.toggle-section[aria-expanded="false"] i {
+     transform: rotate(-90deg);
+}
+
+.section-content {
+    padding-top: 10px;
+    transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+    overflow: hidden;
+    max-height: 10000px; /* Large enough value for content */
+    opacity: 1;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: #f1f3f5; /* Light grey background */
+    color: var(--grey-text);
+    padding: 30px 0;
+    margin-top: 60px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.footer-container p {
+    margin-bottom: 0.5em;
+    color: var(--grey-text);
+}
+
+.footer-container a {
+    color: var(--teal);
+    font-weight: 600;
+}
+.footer-container a:hover {
+    color: var(--orange);
+}
+
+
+/* --- Back to Top Button --- */
+#back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: none; /* Hidden by default */
+    width: 50px;
+    height: 50px;
+    background: var(--gradient);
+    color: var(--light-text);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    z-index: 998;
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+#back-to-top.visible {
+    display: block;
+    opacity: 1;
+}
+
+#back-to-top:hover {
+    background: var(--gradient-hover);
+    transform: scale(1.1);
+}
+
+/* --- Responsive Design --- */
+
+/* Tablets and smaller */
+@media (max-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+
+    .main-nav {
+        display: none; /* Hide desktop nav */
+    }
+
+    .auth-buttons {
+        display: none; /* Hide desktop auth buttons */
+    }
+
+    .mobile-nav-toggle {
+        display: block; /* Show hamburger icon */
+    }
+
+     .mobile-nav.active {
+        display: block; /* Show mobile menu when active */
+    }
+
+    .toc ul {
+        columns: 1; /* Single column TOC on tablets */
+    }
+
+    h1 { font-size: 2.4rem; }
+    h2 { font-size: 1.6rem; }
+}
+
+/* Mobile devices */
+@media (max-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+
+    .header-container {
+        padding: 0 15px; /* Reduce padding on mobile */
+    }
+
+    .content-container {
+        padding: 25px;
+        margin-top: 20px;
+    }
+
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.2rem; }
+
+    .policy-section h2.section-title {
+        cursor: pointer; /* Make titles clickable on mobile */
+    }
+
+    .toggle-section {
+        display: inline-block; /* Show toggle button on mobile */
+    }
+
+    .section-content {
+       /* Collapse sections by default on mobile - JS will toggle 'expanded' class */
+       /* These properties are set by JS adding/removing 'collapsed' class */
+       max-height: 0;
+       opacity: 0;
+       padding-top: 0;
+       margin-bottom: 0; /* Ensure no margin when collapsed */
+       overflow: hidden; /* Ensure content is truly hidden */
+       transition: max-height 0.5s ease-in-out, opacity 0.4s ease-in-out, padding-top 0.5s ease-in-out, margin-bottom 0.5s ease-in-out;
+    }
+
+    .policy-section.expanded .section-content {
+        max-height: 10000px; /* Or a sufficiently large value */
+        opacity: 1;
+        padding-top: 15px; /* Restore padding when expanded */
+        margin-bottom: 1.2em; /* Restore bottom margin */
+    }
+
+    #back-to-top {
+        width: 45px;
+        height: 45px;
+        font-size: 1.3rem;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    /* Adjust ToC link hover for touch */
+     .toc a:hover {
+        padding-left: 0; /* Disable hover indent on touch */
+     }
+}
+
+@media (max-width: 576px) {
+     .container {
+        max-width: 100%;
+        padding: 0 10px;
+    }
+    .content-container {
+        padding: 20px 15px;
+    }
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.4rem; }
+
+    .logo span { display: none; } /* Optionally hide text logo on very small screens */
+    .logo img { height: 35px; }
+
+    .site-header { padding: 10px 0; }
+    .mobile-nav { top: 68px; } /* Adjust based on new header height */
+
+    .btn { padding: 8px 18px; font-size: 0.9rem; }
+}
+
+/* --- Printer Styles --- */
+@media print {
+    body {
+        font-size: 11pt;
+        color: #000;
+        background-color: #fff;
+        line-height: 1.4;
+    }
+
+    .site-header,
+    .site-footer,
+    .toc,
+    .mobile-nav-toggle,
+    .mobile-nav,
+    #back-to-top,
+    .toggle-section,
+    .auth-buttons,
+    hr.section-divider {
+        display: none !important; /* Hide non-essential elements */
+    }
+
+    .container,
+    .content-container {
+        max-width: 100% !important;
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    main.privacy-policy-page {
+        padding: 0;
+    }
+
+    h1, h2, h3 {
+        color: #000 !important; /* Black text for headings */
+        background: none !important; /* Remove gradient from h1 */
+        -webkit-print-color-adjust: exact; /* Ensure colors print if needed, though we force black */
+        print-color-adjust: exact;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 2pt;
+        margin-top: 1.5em;
+        page-break-after: avoid; /* Try to keep headings with content */
+    }
+    h1 { font-size: 20pt; border-bottom: 2px solid #000; }
+    h2 { font-size: 15pt; }
+    h3 { font-size: 12pt; border-bottom: none; }
+
+    p, li {
+        color: #000 !important;
+        orphans: 3; /* Minimum lines at bottom of page */
+        widows: 3;  /* Minimum lines at top of page */
+    }
+
+    a {
+        color: #000 !important;
+        text-decoration: underline !important; /* Underline links for clarity */
+    }
+
+    /* Display URLs after links */
+    a[href^="http"]::after,
+    a[href^="mailto"]::after {
+        content: " (" attr(href) ")";
+        font-size: 9pt;
+        font-weight: normal;
+        word-wrap: break-word;
+    }
+     /* Don't show for internal links */
+    a[href^="#"]::after {
+        content: "";
+    }
+
+
+    .policy-section {
+        page-break-inside: avoid; /* Try to keep sections together */
+        margin-bottom: 10pt;
+    }
+
+    .section-content {
+        max-height: none !important; /* Ensure all content is visible */
+        opacity: 1 !important;
+        padding-top: 5pt !important;
+        overflow: visible !important;
+    }
+
+    ul, ol {
+        padding-left: 20pt;
+    }
+}

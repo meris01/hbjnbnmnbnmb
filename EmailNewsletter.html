@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Email Newsletter Composer - GemContent</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="images/gemcontent-favicon.png"> <!-- Add your favicon -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons (Replace with your kit or use SVGs) -->
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                <a href="home.html" class="logo">GemContent</a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">blog</a></li>
+                    <li><a href="EmailNewsletter.html" class="active">Newsletter Composer</a></li>
+                </ul>
+            </nav>
+            <div class="account-controls">
+                <button class="btn btn-secondary">Log In</button>
+                <button class="btn btn-primary">Sign Up</button>
+            </div>
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="tool-intro container">
+            <h1>AI-Powered Email Newsletter Composer</h1>
+            <p>Craft compelling, personalized email newsletters effortlessly. Let GemContent's AI generate engaging content tailored to your audience and goals.</p>
+        </section>
+
+        <section class="composer-tool container">
+            <div class="composer-layout">
+
+                <!-- ===== Controls Section ===== -->
+                <div class="composer-controls">
+                    <h2>Compose Your Newsletter</h2>
+                    <form id="newsletter-form">
+
+                        <div class="form-group">
+                            <label for="purpose">Newsletter Purpose <span class="required">*</span></label>
+                            <select id="purpose" name="purpose" required>
+                                <option value="promotional">Promotional (Sales, Offers)</option>
+                                <option value="informational">Informational (Updates, Tips)</option>
+                                <option value="announcement">Announcement (New Product, Event)</option>
+                                <option value="engagement">Engagement (Community, Feedback)</option>
+                                <option value="content_digest">Content Digest (Blog Recap)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="industry">Industry / Business Type</label>
+                            <select id="industry" name="industry">
+                                <option value="">Select Industry (Optional)</option>
+                                <option value="tech">Technology / SaaS</option>
+                                <option value="ecommerce">E-commerce / Retail</option>
+                                <option value="marketing">Marketing / Agency</option>
+                                <option value="finance">Finance / Consulting</option>
+                                <option value="health">Health / Wellness</option>
+                                <option value="education">Education</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="subject">Subject Line Idea <span class="required">*</span></label>
+                            <input type="text" id="subject" name="subject" placeholder="e.g., Unlock Summer Savings!, What's New in AI Content" required>
+                            <label class="inline-checkbox">
+                                <input type="checkbox" id="ab-test-subject" name="ab-test-subject"> Generate A/B Test Options
+                            </label>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Key Points / Topics <span class="required">*</span></label>
+                            <div id="key-points-container">
+                                <textarea name="key_points[]" rows="2" placeholder="Enter a key point or topic..." required></textarea>
+                            </div>
+                            <button type="button" id="add-key-point" class="btn btn-secondary btn-sm"><i class="fas fa-plus"></i> Add Point</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tone">Desired Tone <span class="required">*</span></label>
+                            <select id="tone" name="tone" required>
+                                <option value="professional">Professional & Polished</option>
+                                <option value="friendly">Friendly & Approachable</option>
+                                <option value="urgent">Urgent & Action-Oriented</option>
+                                <option value="informative">Informative & Educational</option>
+                                <option value="enthusiastic">Enthusiastic & Exciting</option>
+                                <option value="empathetic">Empathetic & Supportive</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="audience">Target Audience Details</label>
+                            <textarea id="audience" name="audience" rows="2" placeholder="e.g., Marketing managers, small business owners, existing customers"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="length">Desired Length <span class="required">*</span></label>
+                            <select id="length" name="length" required>
+                                <option value="short">Short & Punchy (~100-200 words)</option>
+                                <option value="medium">Medium (~250-400 words)</option>
+                                <option value="long">Long & Detailed (~450+ words)</option>
+                            </select>
+                        </div>
+
+                         <div class="form-group">
+                            <label for="cta-text">Call-to-Action Button Text</label>
+                            <input type="text" id="cta-text" name="cta-text" placeholder="e.g., Learn More, Shop Now, Register Today">
+                        </div>
+                         <div class="form-group">
+                            <label for="cta-link">Call-to-Action Link</label>
+                            <input type="url" id="cta-link" name="cta-link" placeholder="https://yourwebsite.com/offer">
+                        </div>
+
+                        <!-- Drag-and-Drop Section Builder (Placeholder - Requires JS library) -->
+                        <div class="form-group">
+                            <label>Newsletter Sections (Future - Drag & Drop)</label>
+                            <div class="section-builder-placeholder">
+                                <p>Section builder coming soon! AI will generate standard sections based on purpose.</p>
+                                <!-- Example structure (would be interactive) -->
+                                <div class="section-item">Introduction</div>
+                                <div class="section-item">Main Point 1</div>
+                                <div class="section-item">Offer</div>
+                                <div class="section-item">Call to Action</div>
+                                <div class="section-item">Closing</div>
+                            </div>
+                        </div>
+
+                        <button type="submit" id="generate-btn" class="btn btn-primary btn-generate">
+                            <span class="btn-text">Generate Newsletter</span>
+                            <span class="loading-spinner" style="display: none;"></span>
+                        </button>
+                        <p id="error-message" class="error-message" style="display: none;"></p>
+                    </form>
+                </div>
+
+                <!-- ===== Preview & Optimization Section ===== -->
+                <div class="composer-preview">
+                    <h3>Live Preview & Optimization</h3>
+
+                    <div class="preview-controls">
+                        <button id="desktop-view-btn" class="btn btn-secondary active" title="Desktop Preview"><i class="fas fa-desktop"></i></button>
+                        <button id="mobile-view-btn" class="btn btn-secondary" title="Mobile Preview"><i class="fas fa-mobile-alt"></i></button>
+                    </div>
+
+                    <div id="email-preview-container" class="desktop-view">
+                        <div class="email-preview-content" id="email-preview-content">
+                            <!-- Preview will be rendered here by JS -->
+                            <p class="placeholder-text">Your generated newsletter preview will appear here...</p>
+                        </div>
+                    </div>
+
+                    <div class="optimization-panel">
+                        <h4>Optimization Insights</h4>
+                        <div class="insight-item">
+                            <span class="insight-label">Subject Score:</span>
+                            <span class="insight-value" id="subject-score">- / 100</span>
+                            <span class="insight-tip">(AI suggestion based on common practices)</span>
+                        </div>
+                         <div class="insight-item">
+                            <span class="insight-label">Spam Check:</span>
+                            <span class="insight-value" id="spam-check">Pending...</span>
+                             <span class="insight-tip">(Basic keyword check - placeholder)</span>
+                        </div>
+                         <div class="insight-item">
+                            <span class="insight-label">Readability:</span>
+                            <span class="insight-value" id="readability-score">Pending...</span>
+                            <span class="insight-tip">(AI estimation - placeholder)</span>
+                        </div>
+                         <div class="insight-item">
+                            <span class="insight-label">Est. CTR:</span>
+                            <span class="insight-value" id="ctr-prediction">~%</span>
+                             <span class="insight-tip">(Conceptual prediction)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="generated-output" class="generated-output container" style="display: none;">
+            <h2>Generated Newsletter Content</h2>
+            <div id="generated-sections" class="generated-sections-grid">
+                <!-- Generated content sections (Subject, Intro, Body, etc.) will be added here -->
+            </div>
+
+            <div class="export-actions">
+                <h3>Actions</h3>
+                 <button class="btn btn-secondary" id="copy-html-btn"><i class="fas fa-code"></i> Copy HTML</button>
+                 <button class="btn btn-secondary" id="copy-text-btn"><i class="fas fa-file-alt"></i> Copy Plain Text</button>
+                 <button class="btn btn-secondary premium-feature" title="Export directly (Premium Feature)">
+                     <i class="fas fa-rocket"></i> Export to ESP
+                 </button>
+                 <button class="btn btn-secondary premium-feature" title="Save as Template (Premium Feature)">
+                     <i class="far fa-save"></i> Save Template
+                 </button>
+                <!-- Hidden textareas for copying -->
+                <textarea id="copy-html-content" class="hidden-copy-area"></textarea>
+                <textarea id="copy-text-content" class="hidden-copy-area"></textarea>
+            </div>
+             <div class="premium-features-notice">
+                <p><i class="fas fa-star"></i> Upgrade to GemContent Premium for template saving, direct export, A/B testing history, and advanced analytics!</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Mobile Bottom Navigation (Optional but recommended) -->
+     <nav class="mobile-bottom-nav">
+         <button id="mobile-generate-btn" title="Generate"><i class="fas fa-magic"></i><span>Generate</span></button>
+         <button id="mobile-preview-btn" title="Preview"><i class="fas fa-eye"></i><span>Preview</span></button>
+         <button id="mobile-options-btn" title="Options"><i class="fas fa-ellipsis-h"></i><span>Options</span></button>
+     </nav>
+
+    <footer class="site-footer-bottom">
+        <div class="container">
+            <p>© 2024 GemContent. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/EmailNewsletter.js"></script>
+</body>
+</html>

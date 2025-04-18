@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEO Title & Meta Description Generator - GemContent</title>
+    <link rel="stylesheet" href="css/seotitles.css">
+    <!-- Include GemContent's Font Awesome or other icon library if used -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> -->
+</head>
+<body>
+
+    <header class="gem-header">
+        <div class="container header-container">
+            <a href="/" class="logo">
+                <!-- Replace with GemContent SVG or Image Logo -->
+                <a href="home.html" class="logo">GemContent</a>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="features.html" class="active">Tools</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="gem-button gem-button-secondary">Login</button>
+                <button class="gem-button gem-button-primary">Sign Up Free</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container tool-container">
+        <section class="intro">
+            <h1>SEO Title & Meta Description Generator</h1>
+            <p>Craft compelling, SEO-friendly titles and meta descriptions that boost click-through rates. Powered by AI to capture attention in search results.</p>
+        </section>
+
+        <section class="generator-form-section">
+            <form id="seo-generator-form">
+                <h2>Enter Your Details</h2>
+
+                <div class="form-group">
+                    <label for="target-url">Target URL (Optional)</label>
+                    <input type="url" id="target-url" name="target-url" class="gem-input" placeholder="e.g., https://www.example.com/page">
+                </div>
+
+                <div class="form-group">
+                    <label for="main-keyword">Main Keyword <span class="required">*</span></label>
+                    <input type="text" id="main-keyword" name="main-keyword" class="gem-input" placeholder="e.g., best coffee makers" required>
+                </div>
+
+                <div class="form-group" id="secondary-keywords-container">
+                    <label for="secondary-keyword-1">Secondary Keywords (Optional)</label>
+                    <div class="keyword-input-wrapper">
+                        <input type="text" id="secondary-keyword-1" name="secondary-keywords[]" class="gem-input" placeholder="e.g., espresso machines, budget coffee makers">
+                    </div>
+                    <button type="button" id="add-keyword-btn" class="gem-button gem-button-text">
+                        + Add another keyword
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <label for="page-description">Brief Website/Page Description <span class="required">*</span></label>
+                    <textarea id="page-description" name="page-description" class="gem-input" rows="4" placeholder="Describe the main topic or purpose of the page/website in 1-2 sentences." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group char-count-group">
+                        <label for="title-char-count">Title Target Chars</label>
+                        <select id="title-char-count" name="title-char-count" class="gem-select">
+                            <option value="60" selected>~60 (Recommended)</option>
+                            <option value="50">~50</option>
+                            <option value="70">~70</option>
+                        </select>
+                    </div>
+                    <div class="form-group char-count-group">
+                        <label for="desc-char-count">Desc. Target Chars</label>
+                        <select id="desc-char-count" name="desc-char-count" class="gem-select">
+                            <option value="155" selected>~155 (Recommended)</option>
+                            <option value="140">~140</option>
+                            <option value="160">~160</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="industry-niche">Industry / Niche (Optional)</label>
+                    <select id="industry-niche" name="industry-niche" class="gem-select">
+                        <option value="">Select Industry</option>
+                        <option value="technology">Technology</option>
+                        <option value="ecommerce">E-commerce</option>
+                        <option value="marketing">Marketing & Advertising</option>
+                        <option value="health">Health & Wellness</option>
+                        <option value="finance">Finance</option>
+                        <option value="travel">Travel & Hospitality</option>
+                        <option value="food">Food & Beverage</option>
+                        <option value="education">Education</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <button type="submit" id="generate-btn" class="gem-button gem-button-primary gem-button-large">
+                    Generate Titles & Descriptions
+                </button>
+            </form>
+        </section>
+
+        <section id="results-section" class="results-section" aria-live="polite">
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="loader"></div> <!-- Replace with GemContent branded loader -->
+                <p>Generating ideas...</p>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Oops! Something went wrong. Please try again.</p>
+            </div>
+
+            <div id="results-output">
+                <!-- Generated results will appear here -->
+            </div>
+
+             <div id="refine-options" class="refine-options" style="display: none;">
+                 <button id="refine-btn" class="gem-button gem-button-secondary">Refine Results</button>
+                 <p>Not quite right? Tweak your inputs above and click refine.</p>
+             </div>
+        </section>
+
+        <section id="tips-section" class="tips-section">
+            <h2>Quick Tips for Effective SEO Titles & Descriptions</h2>
+            <ul id="contextual-tips">
+                <li>Include your main keyword naturally.</li>
+                <li>Highlight unique benefits or value propositions.</li>
+                <li>Use numbers or power words to grab attention.</li>
+                <li>Keep titles around 60 characters and descriptions around 155.</li>
+                <li>Write for humans first, search engines second.</li>
+            </ul>
+        </section>
+
+        <section id="history-section" class="history-section">
+             <h2>Recent Generations</h2>
+             <div id="history-list">
+                 <p>Your recent generations will appear here.</p>
+                 <!-- History items will be populated by JS -->
+             </div>
+             <button id="clear-history-btn" class="gem-button gem-button-text" style="display: none;">Clear History</button>
+         </section>
+
+    </main>
+
+    <footer class="gem-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> GemContent. All rights reserved.</p>
+            <!-- Add other footer links as needed -->
+        </div>
+    </footer>
+
+    <script src="js/seo_script.js"></script>
+</body>
+</html>

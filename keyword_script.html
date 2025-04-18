@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Keyword Research Tool - GemContent</title>
+    <link rel="stylesheet" href="css/keyword_script.css">
+    <!-- Include GemContent's Icon Library (e.g., Font Awesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="gem-header">
+        <!-- Same Header Structure as previous example -->
+        <div class="container header-container">
+            <a href="home.html" class="logo">GemContent</a> <!-- Link to index/home page -->
+           
+                
+            </a>
+            <nav class="main-nav">
+                 <ul>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="features.html" class="active">Tools</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="gem-button gem-button-secondary">Login</button>
+                <button class="gem-button gem-button-primary">Sign Up Free</button>
+                <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container tool-container">
+        <section class="intro">
+            <h1>AI-Powered Keyword Research Tool</h1>
+            <p>Discover high-impact keywords, understand search intent, and find related questions your audience is asking. Let AI accelerate your content strategy.</p>
+        </section>
+
+        <section class="generator-form-section">
+            <form id="keyword-research-form">
+                <h2>Find Your Keywords</h2>
+
+                <div class="form-group">
+                    <label for="seed-keyword">Enter Seed Keyword <span class="required">*</span></label>
+                    <input type="text" id="seed-keyword" name="seed-keyword" class="gem-input" placeholder="e.g., content marketing" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="industry-niche">Industry / Niche</label>
+                        <select id="industry-niche" name="industry-niche" class="gem-select">
+                            <option value="">Any Industry</option>
+                            <option value="technology">Technology</option>
+                            <option value="saas">SaaS</option>
+                            <option value="ecommerce">E-commerce</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="health">Health</option>
+                            <option value="finance">Finance</option>
+                            <!-- Add more industries -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="content-type">Content Type Goal</label>
+                        <select id="content-type" name="content-type" class="gem-select">
+                            <option value="">Any Type</option>
+                            <option value="blog_post">Blog Post</option>
+                            <option value="product_page">Product Page</option>
+                            <option value="landing_page">Landing Page</option>
+                            <option value="service_page">Service Page</option>
+                            <option value="guide_tutorial">Guide/Tutorial</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                     <label for="search-intent">Primary Search Intent</label>
+                     <select id="search-intent" name="search-intent" class="gem-select">
+                         <option value="">Any Intent</option>
+                         <option value="informational">Informational (Know)</option>
+                         <option value="transactional">Transactional (Do/Buy)</option>
+                         <option value="navigational">Navigational (Go)</option>
+                         <option value="commercial">Commercial Investigation (Compare)</option>
+                     </select>
+                 </div>
+
+                <div class="form-group" id="competitor-urls-container">
+                    <label for="competitor-url-1">Competitor URLs (Optional)</label>
+                    <div class="input-wrapper">
+                        <input type="url" id="competitor-url-1" name="competitor-urls[]" class="gem-input" placeholder="e.g., https://competitor.com/blog/topic">
+                    </div>
+                    <button type="button" id="add-url-btn" class="gem-button gem-button-text">
+                        + Add another URL
+                    </button>
+                </div>
+
+                <button type="submit" id="generate-btn" class="gem-button gem-button-primary gem-button-large">
+                    <i class="fas fa-search"></i> Find Keywords
+                </button>
+            </form>
+        </section>
+
+        <section id="results-section" class="results-section" aria-live="polite">
+            <div id="loading-indicator" class="loading-indicator" style="display: none;">
+                <div class="loader"></div> <!-- GemContent branded loader -->
+                <p>Researching keywords...</p>
+            </div>
+
+            <div id="error-message" class="error-message" style="display: none;">
+                <p>Oops! Keyword research failed. Please try again.</p>
+            </div>
+
+            <div id="results-output" style="display: none;">
+                 <div class="results-header">
+                    <h2>Keyword Ideas</h2>
+                    <div id="usage-limit-indicator" class="usage-indicator" title="API Usage Information">
+                        <!-- Usage info updated by JS -->
+                        <i class="fas fa-bolt"></i> <span>Usage: 5/10 Free Credits</span>
+                    </div>
+                 </div>
+
+                <!-- Swipeable Categories for Mobile / Tabs for Desktop -->
+                <div class="category-selector">
+                    <div class="category-tabs-wrapper">
+                        <button class="category-tab active" data-category="primary">Primary</button>
+                        <button class="category-tab" data-category="longTail">Long-Tail</button>
+                        <button class="category-tab" data-category="questions">Questions</button>
+                        <button class="category-tab" data-category="lsi">LSI Terms</button>
+                    </div>
+                </div>
+
+                 <div class="results-actions-bar">
+                     <label class="batch-select-label">
+                         <input type="checkbox" id="select-all-checkbox"> Select All Visible
+                     </label>
+                     <button id="copy-selected-btn" class="gem-button gem-button-secondary" disabled>
+                        <i class="fas fa-copy"></i> Copy Selected
+                     </button>
+                     <button id="save-selected-btn" class="gem-button gem-button-secondary" disabled>
+                        <i class="fas fa-save"></i> Save Selected
+                     </button>
+                     <div class="export-options">
+                         <button id="export-btn" class="gem-button gem-button-secondary"><i class="fas fa-download"></i> Export <i class="fas fa-caret-down"></i></button>
+                         <div class="export-dropdown">
+                             <button data-format="csv">Export as CSV</button>
+                             <button data-format="pdf">Export as PDF (Coming Soon)</button>
+                         </div>
+                     </div>
+                 </div>
+
+                <!-- Area where keyword cards are displayed -->
+                <div id="results-display-area">
+                    <!-- Keyword cards populated by JS -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Bottom Sheet for Filters/Options (Mobile) -->
+    <div id="filter-options-sheet" class="bottom-sheet">
+        <div class="sheet-overlay"></div>
+        <div class="sheet-content">
+            <button class="close-sheet-btn" aria-label="Close Filters"><i class="fas fa-times"></i></button>
+            <h3>Filter Results</h3>
+            <!-- Add filter options here -->
+            <div class="form-group">
+                <label for="filter-min-relevance">Min. Relevance Score</label>
+                <input type="range" id="filter-min-relevance" min="0" max="100" value="50">
+                <span class="range-value">50</span>
+            </div>
+            <div class="form-group">
+                 <label>Filter by Intent</label>
+                 <div class="checkbox-group">
+                     <label><input type="checkbox" name="filter_intent" value="informational" checked> Informational</label>
+                     <label><input type="checkbox" name="filter_intent" value="transactional" checked> Transactional</label>
+                     <label><input type="checkbox" name="filter_intent" value="navigational" checked> Navigational</label>
+                     <label><input type="checkbox" name="filter_intent" value="commercial" checked> Commercial</label>
+                 </div>
+            </div>
+            <button id="apply-filters-btn" class="gem-button gem-button-primary">Apply Filters</button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button (Mobile) -->
+    <button id="fab" class="fab" aria-label="Show Filters">
+        <i class="fas fa-filter"></i>
+    </button>
+
+    <footer class="gem-footer">
+        <!-- Same Footer Structure -->
+         <div class="container">
+             <p>© <span id="current-year"></span> GemContent. All rights reserved.</p>
+         </div>
+    </footer>
+
+    <script src="js/keyword_script.js"></script>
+</body>
+</html>

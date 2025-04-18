@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - GemContent</title>
+    <link rel="stylesheet" href="css/blog.css">
+    <!-- Google Fonts (Replace with your brand fonts if different) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Add CSS for Lightbox, Syntax Highlighting if needed on single posts -->
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-container">
+            <div class="logo">
+                
+                <span><a href="home.html">GemContent</a></span>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="home.html">Home</a></li>
+                    <li><a href="features.html">Tools</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="pricing.html">Pricing</a></li>
+                    <li><a href="contect.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="login.html" class="btn btn-secondary">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+            <button class="mobile-nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+    <nav class="mobile-nav">
+        <ul>
+           <li><a href="home.html">Home</a></li>
+           <li><a href="features.html">Tools</a></li>
+           <li><a href="blog.html">Blog</a></li>
+           <li><a href="pricing.html">Pricing</a></li>
+           <li><a href="contect.html">Contact</a></li>
+           <li><a href="login.html">Login</a></li>
+           <li><a href="signup.html">Sign Up</a></li>
+       </ul>
+   </nav>
+
+    <!-- Main Content Area -->
+    <main class="blog-page">
+
+        <!-- Featured Article Section -->
+        <section class="featured-article">
+            <div class="featured-image-bg" style="background-image: url('images/featured-post-hero.jpg');"></div>
+            <div class="overlay"></div>
+            <div class="container featured-content">
+                <span class="category-tag tag-highlight">Featured</span>
+                <h2><a href="blog/single-post-slug-1.html">The Future of Content: How AI is Revolutionizing Marketing Strategies</a></h2>
+                <p class="excerpt">Explore the transformative power of artificial intelligence in content creation, personalization, and distribution. Learn how GemContent leverages AI to deliver unparalleled results...</p>
+                <div class="meta">
+                    <img src="images/author-avatar-1.png" alt="Author Jane Doe" class="author-avatar">
+                    <span class="author-name">Jane Doe</span> | <time datetime="2025-04-10">April 10, 2025</time> | <span class="reading-time"> <i class="far fa-clock"></i> 7 min read</span>
+                </div>
+                <a href="blog/single-post-slug-1.html" class="btn btn-primary read-more-btn">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <!-- Blog Controls: Filters & Search -->
+        <section class="blog-controls">
+            <div class="container controls-container">
+                <nav class="category-filters">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="ai-content">AI Content</button>
+                    <button class="filter-btn" data-filter="seo">SEO</button>
+                    <button class="filter-btn" data-filter="content-marketing">Content Marketing</button>
+                    <button class="filter-btn" data-filter="case-studies">Case Studies</button>
+                </nav>
+                <div class="search-container">
+                    <div class="search-bar">
+                        <input type="search" id="blog-search" placeholder="Search articles...">
+                        <button aria-label="Search"><i class="fas fa-search"></i></button>
+                    </div>
+                    <div id="search-suggestions" class="search-suggestions">
+                        <!-- Suggestions dynamically added by JS -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Blog Area: Grid and Sidebar -->
+        <div class="main-blog-area container">
+            <section class="blog-grid-section">
+                <div class="blog-grid">
+                    <!-- Blog Post Cards - Add more as needed -->
+                    <article class="blog-card" data-category="seo">
+                        <div class="card-image">
+                            <a href="blog/single-post-slug-2.html"><img src="images/blog-thumb-seo.jpg" alt="SEO Optimization Tips" loading="lazy"></a>
+                            <span class="popular-badge"><i class="fas fa-fire"></i> Trending</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="category-tag tag-seo">SEO</span>
+                            <h3 class="card-title"><a href="blog/single-post-slug-2.html">10 Actionable SEO Tips to Boost Your Rankings in 2025</a></h3>
+                            <p class="card-excerpt">Stay ahead of the curve with these essential SEO techniques for optimizing your content and improving visibility.</p>
+                            <div class="card-meta">
+                                <img src="images/author-avatar-2.png" alt="Author John Smith" class="author-avatar small">
+                                <span class="author-name">John Smith</span>
+                                <span class="meta-separator">·</span>
+                                <time datetime="2025-04-05">Apr 5</time>
+                                <span class="meta-separator">·</span>
+                                <span class="reading-time-meta">5 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="ai-content">
+                        <div class="card-image">
+                            <a href="blog/single-post-slug-3.html"><img src="images/blog-thumb-ai.jpg" alt="AI Content Generation" loading="lazy"></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="category-tag tag-ai">AI Content</span>
+                            <h3 class="card-title"><a href="blog/single-post-slug-3.html">Ethical Considerations When Using AI for Content Generation</a></h3>
+                            <p class="card-excerpt">Navigating the complexities of AI ethics in content marketing. Ensuring transparency and authenticity.</p>
+                            <div class="card-meta">
+                                <img src="images/author-avatar-1.png" alt="Author Jane Doe" class="author-avatar small">
+                                <span class="author-name">Jane Doe</span>
+                                <span class="meta-separator">·</span>
+                                <time datetime="2025-03-28">Mar 28</time>
+                                <span class="meta-separator">·</span>
+                                <span class="reading-time-meta">6 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card" data-category="content-marketing">
+                        <div class="card-image">
+                            <a href="blog/single-post-slug-4.html"><img src="images/blog-thumb-marketing.jpg" alt="Content Marketing Strategy" loading="lazy"></a>
+                        </div>
+                        <div class="card-content">
+                            <span class="category-tag tag-content-marketing">Content Marketing</span>
+                            <h3 class="card-title"><a href="blog/single-post-slug-4.html">Building a Content Calendar That Drives Results</a></h3>
+                            <p class="card-excerpt">A step-by-step guide to planning and organizing your content marketing efforts for maximum impact.</p>
+                            <div class="card-meta">
+                                <img src="images/author-avatar-3.png" alt="Author Alex Chen" class="author-avatar small">
+                                <span class="author-name">Alex Chen</span>
+                                <span class="meta-separator">·</span>
+                                <time datetime="2025-03-15">Mar 15</time>
+                                <span class="meta-separator">·</span>
+                                <span class="reading-time-meta">8 min</span>
+                            </div>
+                        </div>
+                    </article>
+
+                     <article class="blog-card" data-category="case-studies">
+                        <div class="card-image">
+                            <a href="blog/single-post-slug-5.html"><img src="images/blog-thumb-case-study.jpg" alt="GemContent Case Study" loading="lazy"></a>
+                             <span class="popular-badge"><i class="fas fa-fire"></i> Trending</span>
+                        </div>
+                        <div class="card-content">
+                            <span class="category-tag tag-case-studies">Case Studies</span>
+                            <h3 class="card-title"><a href="blog/single-post-slug-5.html">Case Study: How GemContent Increased Organic Traffic by 300%</a></h3>
+                            <p class="card-excerpt">Discover the strategies and AI-powered tools used to achieve significant growth for a leading SaaS company.</p>
+                            <div class="card-meta">
+                                <img src="images/author-avatar-2.png" alt="Author John Smith" class="author-avatar small">
+                                <span class="author-name">John Smith</span>
+                                <span class="meta-separator">·</span>
+                                <time datetime="2025-03-01">Mar 1</time>
+                                <span class="meta-separator">·</span>
+                                <span class="reading-time-meta">4 min</span>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- More cards here -->
+
+                </div>
+
+                <!-- Pagination / Load More -->
+                <div class="pagination-controls">
+                    <button id="load-more-btn" class="btn btn-secondary">Load More Articles</button>
+                     <div id="loading-indicator" style="display: none; text-align: center; padding: 20px;">
+                        <i class="fas fa-spinner fa-spin"></i> Loading...
+                     </div>
+                </div>
+            </section>
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <!-- Popular Posts Widget -->
+                <div class="widget popular-posts-widget">
+                    <h4 class="widget-title">Popular Posts</h4>
+                    <ul>
+                        <li><a href="blog/single-post-slug-1.html">The Future of Content: How AI is Revolutionizing...</a></li>
+                        <li><a href="blog/single-post-slug-2.html">10 Actionable SEO Tips to Boost Your Rankings...</a></li>
+                        <li><a href="blog/single-post-slug-5.html">Case Study: How GemContent Increased Organic...</a></li>
+                        <li><a href="blog/single-post-slug-4.html">Building a Content Calendar That Drives Results</a></li>
+                    </ul>
+                </div>
+
+                <!-- Categories Widget -->
+                <div class="widget categories-widget">
+                    <h4 class="widget-title">Categories</h4>
+                    <ul>
+                        <li><a href="your_text_enhancer_script.html" data-filter-link="ai-content">AI Content</a></li>
+                        <li><a href="seotitles.html" data-filter-link="seo">SEO</a></li>
+                        <li><a href="ad_copy_script.html" data-filter-link="content-marketing">Content Marketing</a></li>
+                        <li><a href="faq_script.html" data-filter-link="case-studies">Case Studies</a></li>
+                        <li><a href="#" data-filter-link="all">View All</a></li>
+                    </ul>
+                </div>
+
+                <!-- Newsletter Widget -->
+                <div class="widget newsletter-widget">
+                    <h4 class="widget-title">Stay Updated</h4>
+                    <p>Get the latest content marketing insights delivered to your inbox.</p>
+                    <form id="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                    <p class="form- Rmessage" id="newsletter-message"></p>
+                </div>
+            </aside>
+        </div> <!-- /.main-blog-area -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>© 2025 GemContent Inc. All Rights Reserved.</p>
+            <p><a href="/terms">Terms of Service</a> | <a href="privacy.html">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></button>
+
+    <!-- Reading Progress Bar (Primarily for single posts, but structure here) -->
+    <div id="reading-progress-bar"></div>
+
+    <!-- JavaScript -->
+    <script src="js/blog.js"></script>
+</body>
+</html>
